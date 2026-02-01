@@ -1,0 +1,336 @@
+                      Intel(R) C++ Compiler Help
+                      ==========================
+
+usage: icl [options] file1 [file2 ...] [/link linker_options]
+
+  where options represents zero or more compiler options
+
+        fileN is a C/C++ source (.c .cc .cpp .cxx .i), assembly (.asm),
+            object (.obj), static library (.lib), or other linkable file
+
+        linker_options represents zero or more linker options
+
+Notes
+-----
+1. Most Microsoft* Visual C++* compiler options are supported; a warning is
+   printed for most unsupported options.  The precise behavior of performance
+   options does not always match that of the Microsoft Visual C++ compiler.
+
+2. Intel C++ compiler options may be placed in your icl.cfg file.
+
+3. Most options beginning with /Q are specific to the Intel C++ compiler:
+   (*I) indicates other options specific to the Intel C++ compiler
+   (*M) indicates /Q options supported by the Microsoft Visual C++ compiler
+
+                       Compiler Option List
+                       --------------------
+Performance
+-----------
+/O1    optimize for maximum speed, but disable some optimizations which
+       increase code size for a small speed benefit: /Ob1gysi-
+/O2    optimize for maximum speed (DEFAULT):         /Ob1gyti
+/O3    optimize for maximum speed and enable high-level optimizations
+/Ox    enable maximum optimizations: /Ob1gyti
+/Od    disable optimizations; useful for selective optimizations (i.e. /Od /Og)
+
+/fast  enable /QxP /O3 /Qipo /Qprec-div-
+/Ob<n> control inline expansion:
+    n=0  disables inlining
+    n=1  inline functions declared with __inline, and perform C++ inlining
+    n=2  inline any function, at the compiler's discretion (same as /Qip)
+/Og    enable global optimizations
+/Oi[-] enable/disable inline expansion of intrinsic functions
+/Op[-] enable/disable better floating-point precision
+/Os    enable speed optimizations, but disable some optimizations which
+       increase code size for small speed benefit (overrides /Ot)
+/Ot    enable speed optimizations (overrides /Os)
+/Oy[-] enable/disable using EBP as general purpose register (no frame pointer)
+/Oa[-] assume no aliasing in program
+/Ow[-] assume no aliasing within functions, but assume aliasing across calls
+
+/Qax<codes> generate code specialized for processors specified by <codes>
+            while also generating generic IA-32 code.  <codes> includes
+            one or more of the following characters:
+    K  Intel Pentium III and compatible Intel processors
+    W  Intel Pentium 4 and compatible Intel processors
+    N  Intel Pentium 4 and compatible Intel processors.  Enables new
+       optimizations in addition to Intel processor-specific optimizations
+    P  Intel Pentium 4 processors with SSE3 extensions
+    B  Intel Pentium M and compatible Intel processors
+/Qx<codes>  generate specialized code to run exclusively on processors
+            indicated by <codes> as described above.
+/arch:{SSE|SSE2}
+     same as /QxK and /QxW respectively
+
+/GR[-] enable/disable C++ RTTI
+/Qcxx-features
+       enable standard C++ features (-GX -GR)
+/EHa   enable asynchronous C++ exception handling model
+/EHs   enable synchronous C++ exception handling model
+/EHc   assume extern "C" functions do not throw exceptions
+
+/Gd    make __cdecl the default calling convention
+/Gr    make __fastcall the default calling convention
+/Gz    make __stdcall the default calling convention
+
+/GF    enable read-only string pooling optimization
+/GA    optimize for Windows application (assume .exe)
+/GS[-] enable/disable(DEFAULT) overflow security checks
+/GT    enable fiber-safe thread local storage
+
+Advanced Performance
+--------------------
+Enable and specify the scope of Interprocedural (IP) Optimizations:
+/Qip     enable single-file IP optimizations (within files, same as /Ob2)
+/Qipo[n] enable multi-file IP optimizations (between files)
+/Qipo-c  generate a multi-file object file (ipo_out.obj)
+/Qipo-S  generate a multi-file assembly file (ipo_out.asm)
+
+Modify the behavior of IP:
+/Qip-no-inlining    disable full and partial inlining (requires /Qip or /Qipo)
+/Qip-no-pinlining   disable partial inlining (requires /Qip or /Qipo)
+/Qipo-separate      create one object file for every source file 
+                    (overrides /Qipo[n])
+
+Other Advanced Performance Options:
+/Qunroll[n]      set maximum number of times to unroll loops.  Omit n to use
+                 default heuristics.  Use n=0 to disable loop unroller.
+
+/Qprof-dir <d>   specify directory for profiling output files (*.dyn and *.dpi)
+/Qprof-file <f>  specify file name for profiling summary file
+/Qprof-gen[x]    instrument program for profiling; with the x qualifier, extra
+                 information is gathered for use with the PROFORDER tool
+/Qprof-use       enable use of profiling information during optimization
+/Qfnsplit[-]     enable/disable function splitting (enabled with /Qprof-use)
+/Qprefetch[-]    enable(DEFAULT)/disable prefetch insertion
+/Qprof-gen-sampling
+                 prepare code for use with profrun sample gathering tool
+
+/Qpc32      set internal FPU precision to 24 bit significand
+/Qpc64      set internal FPU precision to 53 bit significand (DEFAULT)
+/Qpc80      set internal FPU precision to 64 bit significand
+/QIfist[-]  enable/disable(DEFAULT) fast float-to-int conversions (*M)
+/Qrcd       same as /QIfist
+/Qprec      improve floating-point precision (speed impact less than /Op)
+/Qprec-div[-]
+            improve precision of FP divides (some speed impact)
+/Qprec-sqrt[-]
+            determine if certain square root optimizations are enabled
+/Qfp-port   round fp results at assignments & casts (some speed impact)
+/Qfpstkchk  enable fp stack checking after every function/procedure call
+/Qsfalign8  may align stack for functions with 8 or 16 byte vars (DEFAULT)
+/Qsfalign16 may align stack for functions with 16 byte vars
+/Qsfalign   force stack alignment for all functions
+/Qsfalign-  disable stack alignment for all functions
+/Gh         call __penter in function prolog; for custom user profiling
+/GH         call __pexit in function epilog; for custom user profiling
+
+/Qvec-report[n]  control amount of vectorizer diagnostic information:
+            n=0    no diagnostic information
+            n=1    indicate vectorized loops (DEFAULT)
+            n=2    indicate vectorized/non-vectorized loops
+            n=3    indicate vectorized/non-vectorized loops and prohibiting
+                   data dependence information
+            n=4    indicate non-vectorized loops
+            n=5    indicate non-vectorized loops and prohibiting data
+                   dependence information
+
+/Qopt-report               generate an optimization report to stderr
+/Qopt-report-file<file>    specify the filename for the generated report
+/Qopt-report-level[level]  specify the level of report verbosity (min|med|max)
+/Qopt-report-phase<name>   specify the phase that reports are generated against
+/Qopt-report-routine<name> reports on routines containing the given name
+/Qopt-report-help          display the optimization phases available for 
+                           reporting
+
+/Qtcheck               generate instrumentation to detect multi-threading bugs
+                       (requires Intel(R) Threading Tools; cannot be used with
+                       compiler alone)
+/Qopenmp               enable the compiler to generate multi-threaded code
+                       based on the OpenMP directives
+/Qopenmp-profile       link with instrumented OpenMP runtime library to
+                       generate OpenMP profiling information for use with the
+                       OpenMP component of the VTune(TM) Performance Analyzer
+/Qopenmp-stubs         enables the user to compile OpenMP programs in
+                       sequential mode.  The openmp directives are ignored and
+                       a stub OpenMP library is linked (sequential)
+/Qopenmp-report{0|1|2} control the OpenMP parallelizer diagnostic level
+
+/Qparallel             enable the auto-parallelizer to generate multi-threaded
+                       code for loops that can be safely executed in parallel
+/Qpar-report{0|1|2|3}  control the auto-parallelizer diagnostic level
+/Qpar-threshold[n]     set threshold for the auto-parallelization of loops
+                       where n is an integer from 0 to 100
+
+/Qalias-args[-]        enable(DEFAULT)/disable C/C++ rule that function
+                       arguments may be aliased; when disabling the rule, the
+                       user asserts that this is safe
+/Qansi-alias[-]        enable/disable(DEFAULT) use of ANSI aliasing rules in
+                       optimizations; user asserts that the program adheres to
+                       these rules
+
+/Qcomplex-limited-range[-] enable/disable(DEFAULT) the use of the basic
+                       algebraic expansions of some complex arithmetic
+                       operations.  This can allow for some performance
+                       improvement in programs which use a lot of complex
+                       arithmetic at the loss of some exponent range.
+/Qssp                  enable software-based speculative pre-computation
+
+/fp:<name>    enable <name> floating point model variation
+    except[-]  - enable/disable floating point semantics
+    extended   - enables intermediates in 80-bit precision
+    fast       - allows value-unsafe optimizations
+    precise    - allows value-safe optimizations
+    source     - enables intermediates in source precision
+    strict     - enables /fp:precise /fp:except and disables floating point
+                 multiply add
+
+Output, Debug, PCH
+------------------
+/c         compile to object (.obj) only, do not link
+/S         compile to assembly (.asm) only, do not link (*I)
+/FA[cs]    produce assembly file with optional code or source annotations
+/Fa[file]  name assembly file (or directory for multiple files; i.e. /FaMYDIR\)
+/Fo[file]  name object file (or directory for multiple files; i.e. /FoMYDIR2\)
+/Fe<file>  name executable file or directory
+/Fp[file]  name precompiled header file
+/Yc[hfile] create precompiled header file
+/Yu[hfile] use precompiled header file
+/YX        enable automatic precompiled header file creation/usage
+/Y-        ignore all other precompiled header file options
+/Qpchi[-]  enable(DEFAULT)/disable PCH coexistence, to reduce build time
+/FD        generate file dependencies
+/FR[file]  name extended source browser file
+/Quse-asm[-] enable/disable(DEFAULT) use of assembler to produce object files
+/RTC1      equivalent to /RTCsu
+/RTCs      enable stack frame runtime checks
+/RTCu      report use of variable that was not initialized
+/RTCc      enable checks for converting to smaller types
+/Zi, /Z7   produce symbolic debug information in object file
+/ZI        same as /Zi
+/Qinline-debug-info preserve the source position of inlined code instead
+           of assigning the call-site source position to inlined code
+/debug[:keyword]
+           enable debug information and control output of enhanced
+           debug information.
+           keywords:  all, full, minimal, none (same as /nodebug),
+                       inline-debug-info, variable-locations, semantic-stepping,
+                       extended, [no]expr-source-pos
+/nodebug   do not enable debug information
+/Qtrapuv   trap uninitialized variables
+/Qmap-opts enable option mapping tool
+
+Preprocessor
+------------
+/C         don't strip comments
+/D<name>[{=|#}<text>]  define macro
+/QA<name>[(val)]       create an assertion 'name' having value 'val'
+/QA[-]     remove all predefined macros
+/E         preprocess to stdout
+/EP        preprocess to stdout, omitting #line directives
+/EP /P     preprocess to file, omitting #line directives
+/P         preprocess to file
+/FI<file>  force inclusion of file
+/I<dir>    add directory to include file search path
+/QH        print include file order
+/QM        generate makefile include dependencies; don't compile
+/QMM       similar to /QM, but do not include system header files
+/QMG       similar to /QM, but treat missing header files as generated files
+/QMD       preprocess and compile, generating output file containing
+           dependency information ending with extension .d
+/QMMD      similar to /QMD, but do not include system header files
+/QMF<file> generate makefile dependency information in file (must specify /QM
+           or /QMM)
+/QMT<target>
+           change the default target rule for dependency generation
+/QdM       output macro definitions in effect after preprocessing (use with -E)
+/U<name>   remove predefined macro
+/u         remove all predefined macros
+/X         remove standard directories from include file search path
+
+Component Control
+-----------------
+/Qoption,<str>,<opts>   pass options <opts> to tool specified by <str>
+/Qlocation,<str>,<dir>  set <dir> as the location of tool specified by <str>
+
+Language
+--------
+/J         change default char type to unsigned
+/noBool    disable 'bool' keyword
+/Qc99[-]   enable/disable(default) C99 support for C programs
+/Qms[n]    allow compilation of certain dubious sources
+           n=0  disable Microsoft compatibility bugs
+           n=1  enable most Microsoft compatibilities (DEFAULT)
+           n=2  full Microsoft compatibility
+/Qmspp[-]  enable(DEFAULT)/disable Microsoft Visual C++ 6.0 Processor Pack
+           binary compatibility
+/Qvc6      enable Visual C++ 6.0 compatibility (DEFAULT)
+/Qvc7      enable Visual Studio .NET 2002 compatibility
+/Qvc7.1    enable Visual Studio .NET 2003 compatibility
+/Qrestrict[-] enable/disable the 'restrict' keyword for disambiguating pointers
+-Qtemplate-depth<n>
+           control the depth in which recursive templates are expanded
+/Za        disable Microsoft Visual C++ compiler language extensions
+/Zg        enable the generation of function prototypes
+/Zp[n]     specify alignment constraint for structures (n=1,2,4,8,16;
+           /Zp16 DEFAULT)
+/Zs        check source syntax only, do not compile
+/Zc:arg1[,arg2] specify standard conformance for the following arguments:
+                forScope  enforce standard behavior for initializers of for
+                          loops
+                wchar_t   specify that wchar_t is a native data type
+
+/vd{0|1}   disable or enable hidden vtordisp field in C++ objects
+/vm<x>     specify representation method for C++ pointers to members
+
+Compiler Diagnostics
+--------------------
+/w             disable all warnings
+/W0            print only errors
+/W1, /W2, /W3  print only errors and warnings (DEFAULT)
+/W4, /Wall     print errors, warnings, and remarks
+/WL            print brief one-line diagnostics
+/WX            force warnings to be reported as errors
+/Wcheck        enable more strict diagnostics
+/Wp64          print diagnostics for 64-bit porting
+/Wport         issue portability diagnostics
+/Qwn<n>        print a maximum of n errors
+/Qwd<L1>[,<L2>,...] disable diagnostics L1 through LN
+/Qwe<L1>[,<L2>,...] change severity of diagnostics L1 through LN to error
+/Qcontext-limit<n> 
+               set maximum number of template instantiation contexts shown in
+               diagnostic
+/Qww<L1>[,<L2>,...] change severity of diagnostics L1 through LN to warning
+/Qwr<L1>[,<L2>,...] change severity of diagnostics L1 through LN to remark
+
+Miscellaneous
+-------------
+/?, /help     print this help message
+/nologo       do not display compiler version information
+/Tc<file>     compile file as C source
+/Tp<file>     compile file as C++ source
+/TC           compile all source or unrecognized file types as C source files
+/TP           compile all source or unrecognized file types as C++ source files
+/Qsox[-]      enable/disable(DEFAULT) saving of compiler options and version
+              in the executable
+/Qlong-double enable 80-bit 'long double'
+/Qnobss-init  disable placement of zero-initialized variables in BSS (use DATA)
+/Qglobal-hoist[-]
+              enable(DEFAULT)/disable external globals are load safe
+/showIncludes emit include file names
+/Qmultibyte-chars[-]
+              provide support for multi-byte characters
+
+Linking/Linker
+--------------
+/link      specify that all following options are for the linker
+/F<n>      set the stack reserve amount specified to the linker
+/LD, /LDd  produce a DLL instead of an EXE ('d' = debug version)
+/MD, /MDd  use dynamically-loaded, multithread C runtime
+/ML, /MLd  use statically-loaded, single thread C runtime (/ML is DEFAULT)
+/MT, /MTd  use statically-loaded, multithread C runtime
+/Zl        omit library names from object file
+
+Copyright (C) 1985-2005, Intel Corporation.  All rights reserved.
+
+* Other brands and names are the property of their respective owners.

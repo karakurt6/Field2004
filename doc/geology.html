@@ -1,0 +1,305 @@
+<HTML>
+<HEAD>
+<TITLE>Geology</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript"><!-- 
+function fullsize(sURL)
+{
+  window.open(sURL,'scrshot','width=500,height=375,top=20,left=20,directories=no , Toolbar = no, resizable = yes, menubar = no, ScrollBars = yes ');
+}
+--></SCRIPT>
+
+</HEAD>
+<BODY BACKGROUND="images/graybg.gif" BGCOLOR="GRAY", TEXT="BLACK",
+LINK="BLUE", ALINK="GREEN", VLINK="RED">
+<H3><CENTER>Структура геолого-промысловой базы данных</CENTER></H3>
+Структура геолого-промысловой базы данных заимствована у продукта Finder фирмы Slumberger 
+с небольшими изменениями. В настоящее время эта БД служит также и единственным источником 
+данных для импорта в Field. При импорте делается попытка исправить отдельные ошибки, которые 
+присутствуют в БД Finder. В текущей реализации база данных хранится в формате MDB (Microsoft
+Jet Database Engine), позволяющим с одной сторона извлекать информацию с помощью языка SQL,
+а с другой стороны не требующим установки отдельного сервера для обслуживания базы данных. 
+Всвязи с ограничением в 2Gb, налогаемым на размер базы данных, для хранения массивов 
+информации используется сопутствующий файл в формате HDF (Hierarchical Data Format, National 
+Center for Supercomputing Applications). В базе данных используются следующие таблицы:
+
+<P>
+<A HREF="#dict">Текстовая информация</A><BR>
+<A HREF="#event">События на скважинах</A><BR>
+<A HREF="#geophysics">Интерпретация ГИС</A><BR>
+<A HREF="#hist">История работы скважин</A><BR>
+<A HREF="#logtrack">Библиотека каротажных кривых</A><BR>
+<A HREF="#perf">Интервалы перфорации</A><BR>
+<A HREF="#traj">Инклинометрия скважин</A><BR>
+<A HREF="#well">Общая информация по скважинам</A><BR>
+<A HREF="#cluster">Кустование скважин</A><BR>
+
+<P>
+Далее следует описание назначения и структуры таблиц, имеющихся в составе базы данных программы.
+Структура таблиц базы данных описывается в следующей форме:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Атрибут<TH>Описание
+  <TR><TD>Номер<TD>Номер поля в таблице
+  <TR><TD>Имя<TD>Идентификатор поля
+  <TR><TD>Длина<TD>Длина для строковых значений
+  <TR><TD>Значение по умолчанию
+      <TD>Допустимо ли пустое значение &ltnull&gt и, если не допустимо,
+          какое значение возвращать по умолчанию
+  <TR><TD>Комментарий<TD>Описание характера информации, записываемой в данное поле
+</TABLE>
+<p><b>Таб.5-1.</b><i> Порядок описания таблиц базы данных.</i>
+
+<A NAME=dict><H4>Текстовая информация</H4></A>
+
+<P>
+Таблица dict предназначена для хранения текстовых строк в одном месте. Текстовые поля из других
+таблиц ссылаются на записи в таблице dict, что позволяет сильно уменьшить размер базы данных. 
+Таблица индексирована ключём group_item с полями (dict_group, dict_item). Это значит, что
+допустимые значения, относящиеся к отдельному виду данных перечислены в записях, имеющих
+одно и то же значение в поле dict_group. 
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>dict_item<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>код элемента в группе
+  <TR><TD>2<TD>dict_group<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>код группы элементов
+  <TR><TD>3<TD>dict_mnemonics_ru<TD>DBTYPE_WSTR<TD>10<TD>&ltnull&gt<TD>мнемоника в кириллице
+  <TR><TD>4<TD>dict_mnemonics_eu<TD>DBTYPE_WSTR<TD>10<TD>&ltnull&gt<TD>мнемоника в латинице
+  <TR><TD>5<TD>dict_text_ru<TD>DBTYPE_WSTR<TD>10<TD>&ltnull&gt<TD>краткое описание в кириллице
+  <TR><TD>6<TD>dict_text_еu<TD>DBTYPE_WSTR<TD>10<TD>&ltnull&gt<TD>краткое описание в латинице
+  <TR><TD>7<TD>dict_description_ru<TD>DBTYPE_WSTR<TD>64<TD>&ltnull&gt<TD>развёрнутое описание в кириллице
+  <TR><TD>8<TD>dict_description_еu<TD>DBTYPE_WSTR<TD>64<TD>&ltnull&gt<TD>развёрнутое описание в латинице
+</TABLE>
+<p><b>Таб.5-2.</b><i> Структура таблицы dict.</i>
+
+<A NAME=event><H4>События на скважинах</H4></A>
+
+В таблице event содержится информация о типе, состоянии, способе эксплуатации, причинах 
+останова для каждой конкретной скважины за историю разработки. Таблица проиндексирована 
+ключём well_bore с полями (e_bore, e_type, e_start). 
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>e_bore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>номер ствола скважины
+  <TR><TD>2<TD>e_type<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>код события
+  <TR><TD>3<TD>e_group<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>группа события
+  <TR><TD>4<TD>e_start<TD>DBTYPE_DATE<TD>&nbsp<TD>&nbsp<TD>дата начала события
+  <TR><TD>5<TD>e_final<TD>DBTYPE_DATE<TD>&nbsp<TD>&nbsp<TD>дата конца события
+</TABLE>
+<p><b>Таб.5-3.</b><i> Структура таблицы event.</i>
+
+<A NAME=geophysics><H4>Интерпретация ГИС</H4></A>
+
+<P>
+Таблица geophysics служит для хранения усреднённых характеристик пластов, выделенных экспертами
+при интерпретации геофизических исследований скважин. Также она может использовалься как 
+источник данных по информации о выделенных пропластках. Ввиду большого объёма исходных данных,
+информация по пропласткам хранится в разделе /geophysics/uwi файла формата HDF в компактном
+виде. В этом массиве содержатся следующие данные: к какому геологическому объекту приписан 
+пропласток; основная фаза, насыщающая пропласток; литологическая характеристика; характер
+обводнения; проницаемость; пористость; каротажные кривые ГК и НКТ; кривая самопроизвольной
+полякизации; оценка насыщенности пропластка углеводородами; глинистость. Cопутствующая
+таблица базы данных проиндексирована ключём gp_index с полями (wellbore, startrow) и 
+содержит следующую информацию:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>wellbore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>номер ствола скважины
+  <TR><TD>2<TD>formation<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>идентификатор пласта
+  <TR><TD>3<TD>startrow<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>индекс первого элемента в массиве пропластков
+  <TR><TD>4<TD>finalrow<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>индекс последнего элемента в массиве пропластков
+  <TR><TD>5<TD>startdist<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>расстояние до кровли пласта вдоль ствола скважины
+  <TR><TD>6<TD>finaldist<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>расстояние до подошвы пласта вдоль ствола скважины
+  <TR><TD>7<TD>permeability<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>проницаемость, mD
+  <TR><TD>8<TD>porosity<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>пористость, %
+  <TR><TD>9<TD>hydrocarbon<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>насыщенность, %
+  <TR><TD>10<TD>owcstart<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>верхняя граница переходной зоны нефть-вода
+  <TR><TD>11<TD>owcfinal<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>нижняя граница переходной зоны нефть-вода
+  <TR><TD>12<TD>gocstart<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>верхняя граница переходной зоны газ-нефть
+  <TR><TD>13<TD>gocfinal<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>нижняя граница переходной зоны газ-нефть
+</TABLE>
+<p><b>Таб.5-4.</b><i> Структура таблицы geophysics.</i>
+
+<A NAME=hist><H4>История работы скважин</H4></A>
+
+<P>
+Таблица hist предназначена для хранения информации по ежемесячной истории добычи углеводородов 
+и закачки бурового раствора. Она проиндексирована ключём h_bore с полями (wellbore, formation, 
+startdate) и содержит следующую информацию:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>wellbore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>номер ствола скважины
+  <TR><TD>2<TD>formation<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>идентификатор пласта
+  <TR><TD>3<TD>startdate<TD>DBTYPE_DATE<TD>&nbsp<TD>&nbsp<TD>начало периода
+  <TR><TD>4<TD>finaldate<TD>DBTYPE_DATE<TD>&nbsp<TD>&nbsp<TD>конец периода
+  <TR><TD>5<TD>opcode<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>способ эксплуатации
+  <TR><TD>6<TD>oil<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>количество нефти (т) в продукции скважины
+  <TR><TD>7<TD>water<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>количество воды (т) в продукции скважины
+  <TR><TD>8<TD>gas<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>попутный газ (куб.м.) в продукции скважины
+  <TR><TD>9<TD>fluid<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>объём закачки бурового раствора (т)
+  <TR><TD>10<TD>puregas<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>газ (куб.м.) для газовых скважин
+  <TR><TD>11<TD>worktime<TD>DBTYPE_I2<TD>&nbsp<TD>&ltnull&gt<TD>реальное количество часов работы
+</TABLE>
+<p><b>Таб.5-5.</b><i> Структура таблицы hist.</i>
+
+<A NAME=logtrack><H4>Библиотека каротажных кривых</H4></A>
+
+<P>
+База данных содержит обширную библиотеку каротажных кривых в виде массивов, хранящихся в 
+файле HDF. Массивы значений каротажных кривых хранятся по адресу 
+<P>
+<CENTER>/logtrack/&ltмнемоника кривой&gt/&ltномер версии замера&gt/&ltидентификатор скважины&gt,</CENTER>
+<P>
+а другие атрибуты собраны в таблицу logtrack базы данных. Таблица проиндексирована ключём
+bore_curve_version с полями (lt_bore, lt_type, lt_ver) и содержит следующую информацию:
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>lt_bore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>идентификатор скважины
+  <TR><TD>2<TD>lt_run<TD>DBTYPE_UI1<TD>&nbsp<TD>&nbsp<TD>номер спуско-подъёмной операции
+  <TR><TD>3<TD>lt_pass<TD>DBTYPE_UI1<TD>&nbsp<TD>&nbsp<TD>номер прохода в спуско-подъёмной операции
+  <TR><TD>4<TD>lt_ver<TD>DBTYPE_UI1<TD>&nbsp<TD>&nbsp<TD>номер версии, используемый для редакции кривой
+  <TR><TD>5<TD>lt_type<TD>DBTYPE_WSTR<TD>12<TD>&nbsp<TD>мнемоника кривой
+  <TR><TD>6<TD>lt_unit<TD>DBTYPE_WSTR<TD>64<TD>&nbsp<TD>единицы измерения трассы
+  <TR><TD>7<TD>lt_null<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>значение, обозначающее отсутствие данных
+  <TR><TD>8<TD>lt_min<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>минимальное значение амплитуды
+  <TR><TD>9<TD>lt_max<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>максимальное значение амплитуды
+  <TR><TD>10<TD>num_data<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>число элементов в массиве значений амплитуды
+  <TR><TD>11<TD>depth_type<TD>DBTYPE_WSTR<TD>1<TD>&nbsp<TD>тип независимой переменной (глубина или время)
+  <TR><TD>12<TD>depth_unit<TD>DBTYPE_WSTR<TD>64<TD>&nbsp<TD>единицы измерения независимой переменной
+  <TR><TD>13<TD>depth_step<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>приращение независимой переменной
+  <TR><TD>14<TD>min_depth<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>значение начала записи кривой
+  <TR><TD>15<TD>max_depth<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>значение прекращения записи кривой
+</TABLE>
+<p><b>Таб.5-6.</b><i> Структура таблицы logtrack.</i>
+
+<A NAME=perf><H4>Интервалы перфорации</H4></A>
+
+Информацию по интервалам перфорации содержит таблица perf. Эта таблица проиндексирована ключём 
+well_bore с полями (perf_bore, perf_form, perf_upper, perf_comp) и имеет следующий вид:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>perf_bore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>номер ствола скважины
+  <TR><TD>2<TD>perf_form<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>код целевого пласта
+  <TR><TD>3<TD>perf_comp<TD>DBTYPE_DATE<TD>&nbsp<TD>&nbsp<TD>дата перфорации
+  <TR><TD>4<TD>perf_close<TD>DBTYPE_DATE<TD>&nbsp<TD>&ltnull&gt<TD>дата цеметажа
+  <TR><TD>5<TD>perf_upper<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>средняя глубина "кровли" перфорации
+  <TR><TD>6<TD>perf_lower<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>средняя глубина "подошвы" перфорации
+</TABLE>
+<p><b>Таб.5-7.</b><i> Структура таблицы perf.</i>
+
+<A NAME=traj><H4>Инклинометрия скважин</H4></A>
+
+Массивы, описывающие геометрию ствола скважины хранятся в сопутствующем файле формата HDF 
+по адресу
+<P>
+<CENTER>/traj/&ltверсия замера&gt/&ltидентификатор скважины&gt.</CENTER>
+<P>
+Каждый элемент массива содержит картеж чисел с плавающей точкой {dx, dy, dz; md}, который
+сопоставляет расстоянию md, измеренному вдоль ствола скважины, относительное смещение
+точки замера (dx, dy, dz) от устья скважины. Записи таблицы traj базы данных программы 
+ссылаются на эти массивы. Таблица проиндексирована ключём bore_id, который содержит поля
+(traj_wb, trj_id). Кроме того, для строго вертикальных скважин достаточно иметь только 
+запись в таблице traj, которая полностью определяет геометрию ствола скважины. Таблица
+имеет следующий вид:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>traj_wb<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>универсальный идентификатор скважины
+  <TR><TD>2<TD>traj_id<TD>DBTYPE_UI1<TD>&nbsp<TD>&nbsp<TD>идентификатор замера инклинометрии
+  <TR><TD>3<TD>traj_dx<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>отклонение забоя по направлению запад-восток
+  <TR><TD>4<TD>traj_dy<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>отклонение забоя по направлению юг-север
+  <TR><TD>5<TD>traj_dz<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>абсолютная глубина от поверхности стола ротора
+  <TR><TD>6<TD>traj_md<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>глубина, на которой прерван замер инклинометрии
+  <TR><TD>6<TD>traj_ns<TD>DBTYPE_I2<TD>&nbsp<TD>&nbsp<TD>число элементов в массиве замера инклинометрии
+</TABLE>
+<p><b>Таб.5-8.</b><i> Структура таблицы traj.</i>
+
+<A NAME=well><H4>Общая информация по скважинам</H4></A>
+
+Это основная таблица базы данных, в которой собрана информация о номенклатуре скважины, 
+принадлежности скважины, расположению скважины по проекту, характеру работы скважины по проекту
+и т.д. Таблица проиндексирована ключём well_bore, состоящим из единственного поля well_bore, и
+имеет следующий вид:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>well_name<TD>DBTYPE_WSTR<TD>20<TD>&nbsp<TD>имя скважины
+  <TR><TD>2<TD>well_bore<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>идентификатор ствола
+  <TR><TD>3<TD>well_dx<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>отклонение забоя по X
+  <TR><TD>4<TD>well_dy<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>отклонение забоя по Y
+  <TR><TD>5<TD>well_dz<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>вертикальная глубина от стола ротора
+  <TR><TD>6<TD>well_md<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>максимальная глубина скважины
+  <TR><TD>7<TD>well_hx<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>координата X забоя скважины
+  <TR><TD>8<TD>well_hy<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>координата Y забоя скважины
+  <TR><TD>9<TD>well_type<TD>DBTYPE_I4<TD>&nbsp<TD>1049201<TD>характер работы скважины
+  <TR><TD>10<TD>undertaker<TD>DBTYPE_I4<TD>&nbsp<TD>1020901<TD>код управления, эксплуатирующего скважину
+  <TR><TD>11<TD>well_elev<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>возвышение стола ротора над уровнем приведения
+  <TR><TD>12<TD>well_gnd<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>возвышение над уровнем моря
+  <TR><TD>13<TD>condition<TD>DBTYPE_I4<TD>&nbsp<TD>1048101<TD>текущее состояние скважины
+  <TR><TD>14<TD>spud_date<TD>DBTYPE_DATE<TD>&nbsp<TD>&ltnull&gt<TD>дата начала бурения
+  <TR><TD>15<TD>comp_date<TD>DBTYPE_DATE<TD>&nbsp<TD>&ltnull&gt<TD>дата начала освоения
+  <TR><TD>16<TD>prod_date<TD>DBTYPE_DATE<TD>&nbsp<TD>&ltnull&gt<TD>дата ввода в эксплуатацию
+  <TR><TD>17<TD>drill_date<TD>DBTYPE_DATE<TD>&nbsp<TD>&ltnull&gt<TD>дата окончания бурения
+  <TR><TD>18<TD>traj_id<TD>DBTYPE_UI1<TD>&nbsp<TD>&ltnull&gt<TD>привязка к таблице с инклинометрией
+  <TR><TD>19<TD>plugback<TD>DBTYPE_R4<TD>&nbsp<TD>&ltnull&gt<TD>положение искусственного забоя
+  <TR><TD>20<TD>explore_area<TD>DBTYPE_I4<TD>&nbsp<TD>1144101<TD>код разведочной площади
+  <TR><TD>21<TD>department<TD>DBTYPE_I4<TD>&nbsp<TD>1165001<TD>код цеха, у которого скважина стоит на балансе
+  <TR><TD>22<TD>lease_area<TD>DBTYPE_WSTR<TD>40<TD>&ltnull&gt<TD>имя лицензионного участка
+  <TR><TD>23<TD>cluster<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>куст, в котором пробурена скважина
+  <TR><TD>24<TD>parent_bore<TD>DBTYPE_I4<TD>&nbsp<TD>&ltnull&gt<TD>ссылка на идентификатор основной скважины
+</TABLE>
+<p><b>Таб.5-8.</b><i> Структура таблицы well.</i>
+
+<A NAME=well><H4>Кустование скважинам</H4></A>
+
+В процессе эксплуатации программы было выявлено, что координаты устья скважин, заданные
+в базе данных Finder, отстоят на большом удалении от куста скважин (десятки километров), 
+которому они принадлежат, нарушая тем самым ковёр разбуривания. Данной программой такая ситуация
+трактуется как ошибка и применяется специальный алгоритм для автоматической корректировки
+положения скважин на основе кластирезации. На следующей иллюстрации отражена работа
+алгоритма по восстановлению ковра разбуривания месторождения, задуманного проектировщиками.
+Цветом выделены кусты, в состав которых входят скважины, отстоящие на большое расстояние от
+других скважин, принадлежащих данному кусту. 
+
+<P>
+<a href="javascript:fullsize('cluster1.html')">
+<img src="images/cluster1.png" border=0 width=351 height=496 alt="Начальное состояние">
+</a>
+<a href="javascript:fullsize('cluster2.html')">
+<img src="images/cluster2.png" border=0 width=351 height=496 alt="Конечное состояние">
+</a>
+<p><b>Рис 5-1..5-2.</b> <i>
+Работа алгоритма восстановления конфигурации скважин
+</i>
+
+<P>
+В результате работы алгоритма вычисляются координаты куста скважин, которые заносятся в
+следующую таблицу базы данных:
+
+<P>
+<TABLE BORDER CELLPADDING=3 CELLSPACING=0>
+  <TR><TH>Номер<TH>Имя<TH>Тип<TH>Длина<TH>Значение по умолчанию<TH>Комментарий
+  <TR><TD>1<TD>c_number<TD>DBTYPE_I4<TD>&nbsp<TD>&nbsp<TD>номер куста для ссылки на таблицу well
+  <TR><TD>2<TD>c_name<TD>DBTYPE_UI1<TD>&nbsp<TD>&nbsp<TD>имя куста по проектным документам
+  <TR><TD>3<TD>c_xcoord<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>X-координата
+  <TR><TD>4<TD>c_ycoord<TD>DBTYPE_R4<TD>&nbsp<TD>&nbsp<TD>Y-координата
+</TABLE>
+<p><b>Таб.5-8.</b><i> Структура таблицы cluster.</i>
+
+
+<P>
+<ADDRESS> Created by Alexander Chupeev<BR>
+Created on 17 April 2004</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,124 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by Field.rc
+//
+#define ID_REMOVE                       3
+#define ID_EDIT                         3
+#define ID_UPDATE                       4
+#define IDD_ABOUTBOX                    100
+#define IDD_FIELD_FORM                  101
+#define IDD_FIELD_GRID                  104
+#define IDD_FIELD_DATA                  105
+#define IDR_MAINFRAME                   128
+#define IDR_FIELDTYPE                   129
+#define IDR_FIELD_VIEW                  130
+#define IDD_CROSS_SECTION               132
+#define IDB_EDIT_UP                     133
+#define IDB_EDIT_DN                     134
+#define IDD_EDIT_COLOR                  135
+#define IDB_EDIT_DEL                    135
+#define IDR_CROSS_SECTION               136
+#define IDD_PLOT_PROPERTIES             137
+#define IDD_COLOR_LIST                  141
+#define IDD_COLOR_ITEM                  142
+#define IDB_EDIT_ADD                    142
+#define IDI_SAVE                        143
+#define IDI_OPEN                        144
+#define IDD_NEW_DOCUMENT                145
+#define IDD_PROBE_GRID                  146
+#define IDD_SATURATION                  149
+#define IDD_RESERVES                    150
+#define IDD_RESCONSTR                   151
+#define IDD_FIELD_EXPR                  152
+#define IDR_FIELD_EXPR                  153
+#define IDB_RADIO_BUTTON                154
+#define IDD_DIGITIZE                    155
+#define IDD_FINDWELL                    156
+#define IDD_LOGTRACK                    157
+#define IDI_3DDATA                      161
+#define IDR_FRAGMENT                    162
+#define IDD_INCLINOMETRY                163
+#define COLOR_LUMSCROLL                 702
+#define COLOR_HUE                       703
+#define COLOR_SAT                       704
+#define COLOR_LUM                       705
+#define COLOR_RED                       706
+#define COLOR_GREEN                     707
+#define COLOR_BLUE                      708
+#define COLOR_CURRENT                   709
+#define COLOR_RAINBOW                   710
+#define COLOR_ADD                       712
+#define COLOR_SOLID                     713
+#define COLOR_MIX                       719
+#define COLOR_BOX1                      720
+#define COLOR_CUSTOM1                   721
+#define COLOR_HUEACCEL                  723
+#define COLOR_SATACCEL                  724
+#define COLOR_LUMACCEL                  725
+#define COLOR_REDACCEL                  726
+#define COLOR_GREENACCEL                727
+#define COLOR_BLUEACCEL                 728
+#define IDC_RADIO1                      1003
+#define IDC_RADIO2                      1004
+#define IDC_RADIO3                      1005
+#define IDC_MONTHCALENDAR1              1006
+#define IDC_INJLIST                     1008
+#define IDC_EXTLIST                     1009
+#define IDC_LAYER                       1014
+#define IDC_SLIDER1                     1015
+#define IDC_EDIT1                       1016
+#define IDC_EDIT3                       1017
+#define IDC_EDIT4                       1018
+#define IDC_SPIN1                       1019
+#define IDC_EDIT5                       1019
+#define IDC_LIST1                       1020
+#define IDC_EDIT10                      1020
+#define IDC_EDIT11                      1021
+#define IDC_CHECK1                      1022
+#define IDC_EDIT2                       1023
+#define IDC_BUTTON1                     1024
+#define IDC_EDIT6                       1024
+#define IDC_BUTTON2                     1025
+#define IDC_EDIT7                       1025
+#define IDC_BUTTON3                     1026
+#define IDC_EDIT8                       1026
+#define ID_PLOT_CROSS_SECTION           1027
+#define IDC_EDIT9                       1027
+#define IDC_BUTTON4                     1027
+#define IDC_CHECK2                      1028
+#define IDC_BUTTON5                     1028
+#define IDC_COMBO1                      1029
+#define IDC_CHECK3                      1030
+#define IDC_CHECK4                      1031
+#define IDC_EDIT12                      1032
+#define IDC_EDIT13                      1033
+#define IDC_CUSTOM1                     1033
+#define ID_DIGITIZE                     1037
+#define IDC_TREE1                       1038
+#define IDC_COMBO3                      1041
+#define ID_FIELD_VIEW_PROP              32771
+#define ID_FIELD_SCALE                  32772
+#define ID_FIELD_COLORING               32773
+#define ID_VIEW_CROSS_SECTION           32774
+#define ID_PLOT_PROPERTIES              32775
+#define ID_PROBE_GRID                   32776
+#define ID_SATURATION                   32777
+#define ID_RESDIALOG                    32778
+#define ID_FIELD_EXPR                   32780
+#define ID_FINDWELL                     32781
+#define ID_VIEW_WELLMATCH               32782
+#define ID_FIELD_QUERYWELLBORE          32783
+#define ID_FIELD_START3DVIEWER          32784
+#define ID_INCLINOMETRY                 32788
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        164
+#define _APS_NEXT_COMMAND_VALUE         32789
+#define _APS_NEXT_CONTROL_VALUE         1042
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif

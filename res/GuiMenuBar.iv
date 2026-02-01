@@ -1,0 +1,113 @@
+#Inventor V1.0 ascii
+
+  MenuBar {
+
+    MenuPopup {
+      label "File"
+      
+      MenuFileSelection {
+        label "Open iv ..."
+        auditorID "OpenFile"
+      }
+
+      MenuFileSelection {
+        label "Save as Ascii..."
+        mode SAVE
+        auditorID "SaveAscii"
+      }
+      MenuFileSelection {
+        label "Save as Binary..."
+        mode SAVE
+        auditorID "SaveBinary"
+      }
+
+    } #File
+
+    MenuPopup {
+      label "Coloring"
+        
+      MenuPopup {
+        label "Mode"
+        MenuRadioButtons { 
+          items  ["constant", "average", "mapping", "contouring", "texturing"]
+          selectedItem  2
+          labelAlignment  LEFT  
+          auditorID "Coloring"
+        } 
+      }
+
+      MenuPopup {
+        label "DataSet used"
+        MenuRadioButtons { 
+          items  ["dataset0", "dataset1", "dataset2"]  
+          selectedItem  2
+          labelAlignment  LEFT  
+          auditorID "DataSet used"
+        }
+      }
+
+    } #Coloring
+
+    MenuPopup {
+      label "Dragger"
+        
+      MenuCheckBox {
+        label "Enable"
+        onString ""
+        auditorID "Dragger"
+      }
+
+      MenuSeparator {
+      }  
+
+      MenuPopup {
+        label "Orientation"
+        MenuRadioButtons { 
+          items  ["X", "Y", "Z"]
+          selectedItem  0
+          label  "Orientation"  
+          auditorID "Dragger Orientation"
+        }
+      }
+
+    } #Dragger
+
+
+    MenuPopup {
+      label "Options"
+      auditorID "Options"
+      
+      MenuPushButton {
+        label "Scalar ..."
+        auditorID "launchScalar"
+        enable FALSE
+      }
+
+      MenuPushButton {
+        label "Stream ..."
+        auditorID "launchStream"
+        enable FALSE
+      }
+
+      MenuPushButton {
+        label "Vectors ..."
+        auditorID "launchVectors"
+        enable FALSE
+      }
+
+      MenuPushButton {
+        label "Probe ..."
+        auditorID "launchProbe"
+        enable FALSE
+      }
+
+      MenuCheckBox{
+        label "Separated Windows"
+        enable FALSE
+        onString "Merged Windows"
+        state FALSE
+        auditorID "MergeWindowsCheck"
+      }
+    } #Options
+
+ } #MenuBar

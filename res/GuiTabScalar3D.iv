@@ -1,0 +1,104 @@
+#Inventor V1.0 ascii
+
+      RowDialog {
+        label "Scalar"
+        rowSpacing 10
+        auditorID "ScalarTab"
+
+        ###################  Level Surf ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          DialogLabel {
+            label "Level-surface"
+          }
+          DialogCheckBox {
+            label "Enable"
+            auditorID "LevelSurfCheck"
+          }
+          DialogComboBox {
+            label "Data set used"
+#            maxWidth 200
+            items  ["dataset0", "dataset1", "dataset2"]  
+            auditorID "LevelIsovalChoice"
+          }
+          DialogRealSlider {
+            label "Isovalue"
+            auditorID "LevelSlider"
+          }
+        }
+
+        ###################  Skin ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          DialogLabel {
+            label "Mesh Skin"
+          }
+          ColumnDialog {
+            DialogCheckBox {
+              label "Enable"
+              auditorID "SkinCheck"
+            }
+            DialogCheckBox {
+              label "colored"
+              state TRUE
+              auditorID "SkinColorCheck"
+            }
+          }
+          ColumnDialog {
+            DialogRealSlider {
+              label "Transparency"
+              min 0
+              max 1
+              auditorID "SkinTransparency"
+            }
+            DialogComboBox {
+              label "type"
+              items  ["screen door","add","delayed add","sorted object add","blend","delayed blend","sorted object blend","sorted layers blend"]
+              auditorID "TypeTransparency"
+            }
+          }
+        }
+
+        ###################  Skeleton ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          DialogLabel {
+            label "Mesh Skeleton"
+          }
+          DialogCheckBox {
+            label "Enable"
+            auditorID "SkeletonCheck"
+          }
+        }
+  
+        ###################  cross ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          DialogLabel {
+            label "Mesh cut plane"
+          }
+          ColumnDialog {
+            DialogCheckBox { 
+              label "linked to dragger"
+              auditorID "CrossSectionLink"
+            }
+            DialogCheckBox {
+              label "Modelling clipping"
+              auditorID "ClippingCheck"
+            }
+          }
+          ColumnDialog {
+            DialogCheckBox {
+              label "Cross section"
+              auditorID "CrossSectionCheck"
+            }
+            DialogCheckBox {
+              label "Cross contour"
+              auditorID "CrossContourCheck"
+            }
+          }
+
+        }
+
+      }
+

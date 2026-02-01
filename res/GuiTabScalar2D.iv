@@ -1,0 +1,131 @@
+#Inventor V1.0 ascii
+
+RowDialog {
+  label "Scalar"
+  auditorID "ScalarTab"
+  rowSpacing 10
+   ###################  Altitude ################
+  RowDialog {
+    edgeStyle  SHADOW_IN
+    DialogLabel {
+      label "Altitude"
+    }
+    DialogCheckBox {
+      label "Enable"
+      auditorID "AltitudeEnable"
+    }
+    DialogComboBox {
+      label "Data set used"
+#      maxWidth 200
+      items  ["dataset0", "dataset1", "dataset2"]
+      auditorID "AltitudeDatasetUsed"  
+    }
+  }
+   ###################  Mesh lines ################
+  ColumnDialog{
+    columnSpacing 10
+    RowDialog{
+      rowSpacing 10
+      RowDialog {
+        edgeStyle  SHADOW_IN
+        DialogLabel {
+          label "Mesh Lines"
+        }
+        DialogCheckBox {
+          label "Enable"
+          auditorID "MeshLinesEnable"
+        }
+      }
+       ###################  Mesh limit ################
+      RowDialog {
+        edgeStyle  SHADOW_IN
+        DialogLabel {
+          label "Mesh Limit"
+        }
+        DialogCheckBox {
+          label "Enable"
+          auditorID "MeshLimitEnable"
+        }
+      }
+    }
+    RowDialog {
+      rowSpacing 10
+
+      ###################  Mesh Filled ################
+      RowDialog {
+        edgeStyle  SHADOW_IN
+        DialogLabel {
+          label "Mesh Filled"
+        }
+        DialogCheckBox {
+          label "Enable"
+          auditorID "MeshFilledEnable"
+        }
+      }
+       ###################  Mesh Sides ################
+      RowDialog {
+        edgeStyle  SHADOW_IN
+        DialogLabel {
+          label "Mesh Sides"
+        }
+        DialogCheckBox {
+          label "Enable"
+          auditorID "MeshSidesEnable"
+        }
+      }
+    }
+  }
+   ###################  Contour lines ################
+  RowDialog {
+    edgeStyle  SHADOW_IN
+    DialogLabel {
+      label "Contour lines"
+    }
+    DialogCheckBox {
+      label "Enable"
+      auditorID "ContourLinesEnable"
+    }
+  }
+     ###################  Contour annot ################
+  RowDialog {
+    edgeStyle  SHADOW_IN
+    auditorID "ContourAnnot"
+    DialogLabel {
+      label "Contour annot"
+    }
+    DialogCheckBox {
+      label "Enable"
+      auditorID "ContourAnnotEnable"
+    }
+    DialogCheckBox {
+      label "Background"
+      auditorID "ContourAnnotBackground"
+    }
+    DialogComboBox {
+      label "path"
+      maxWidth 200
+      items  ["Tangential","Horizontal","Vertical"]
+      auditorID "ContourAnnotPath"
+    }
+    DialogRealSlider {
+      label "gap"
+      min 0
+      max 1
+      value 0.3
+      auditorID "ContourAnnotGap"
+    }
+    DialogRealSlider {
+      label "font size"
+      min 0
+      max 0.1
+      value 0
+      auditorID "ContourAnnotFontSize"
+    }
+    DialogComboBox {
+      label "crossing ..."
+      maxWidth 200
+      items  ["any contour","minor contour","none"]
+      auditorID "ContourAnnotCrossing"
+    }
+   }
+}

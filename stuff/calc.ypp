@@ -1,0 +1,329 @@
+%{
+
+#define _AFXDLL
+#define NOMINMAX
+#include "stdafx.h"
+#include "..\FieldDoc.h"
+#include "calc.h"
+
+#include <ctype.h>
+#include <stdarg.h>
+#include <libh5/hdf5.h>
+#include <vector>
+#include <list>
+
+#pragma warning(disable: 4065)
+
+#define YYDEBUG 1
+#define YYSTYPE Node*
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+enum Type { NUM_NODE, FIELD_NODE, OPER_NODE };
+enum Code { NEG_NODE, ADD_NODE, SUB_NODE, MUL_NODE, DIV_NODE };
+
+struct Number
+{
+  Type type;
+  float value;
+};
+
+struct Field
+{
+  Type type;
+  const CFieldDoc::DataField* data;
+};
+
+struct Oper
+{
+  Type type;
+  Code code;
+  int argc;
+  union Node* argv[1];
+};
+
+union Node
+{
+  Type type;
+  Number number;
+  Field field;
+  Oper oper;
+};
+
+typedef Expr::farray farray;
+
+static const char* yyData;
+static CFieldDoc* yyDoc;
+static Node* yyRoot;
+static std::list<Node*> yyObjs;
+static int yyLevel;
+
+void yyerror(const char* s);
+Node* op(Code, int, ...);
+void rm(Node*);
+int yylex();
+int yyparse();
+
+%}
+
+%token NUM DAT ERR
+
+%left '+' '-'
+%left '*' '/'
+%left NEG
+%right '^'
+
+%%
+
+input: expr          { yyRoot = $1; }
+;
+
+expr: NUM           { $$ = $1; }
+    | DAT           { $$ = $1; }
+    | '-' expr %prec NEG { $$ = op(NEG_NODE, 1, $2); }
+    | expr '+' expr { $$ = op(ADD_NODE, 2, $1, $3); }
+    | expr '-' expr { $$ = op(SUB_NODE, 2, $1, $3); }
+    | expr '*' expr { $$ = op(MUL_NODE, 2, $1, $3); }
+    | expr '/' expr { $$ = op(DIV_NODE, 2, $1, $3); }
+    | '(' expr ')'  { $$ = $2; }
+;
+
+%%
+
+static void yyerror(const char* s)
+{
+  AfxMessageBox(s);
+}
+
+static int yylex()
+{
+  char c;
+
+  while ((c = *yyData++) == ' ' || c == '\t');
+
+  if (c == '.' || isdigit(c))
+  {
+    int n;
+    float val;
+    --yyData;
+    if (1 != sscanf(yyData, "%f%n", &val, &n))
+    {
+      return ERR;
+    }
+    yyData += n;
+
+    Node* p = (Node*) new Number;
+    p->type = NUM_NODE;
+    p->number.value = val;
+    yylval = p;
+    yyObjs.push_back(p);
+
+    return NUM;
+  }
+
+  if (isalpha(c))
+  {
+    std::vector<char> id;
+    while (__iscsym(c))
+    {
+      id.push_back(c);
+      c = *yyData++;
+    }
+    --yyData;
+    id.push_back('\0');
+    char *ch = new char[id.size()];
+    std::copy(id.begin(), id.end(), ch);
+
+    const CFieldDoc::DataField* field = yyDoc->Field(ch);
+    if (field != 0)
+    {
+      Node* p = (Node*) new Field;
+      p->type = FIELD_NODE;
+      p->field.data = field;
+      yylval = p;
+      yyObjs.push_back(p);
+
+      delete[] ch;
+      return DAT;
+    }
+    
+    delete[] ch;
+    yyerror("undefined identifier");
+    return ERR;
+  }
+
+  return c;
+}
+
+static Node* op(Code code, int argc, ...)
+{
+  Node* p = (Node*) new char[sizeof(Oper) + (argc-1) * sizeof(Node*)];
+  p->type = OPER_NODE;
+  p->oper.code = code;
+  p->oper.argc = argc;
+  yyObjs.push_back(p);
+
+  va_list mark;
+  va_start(mark, argc);
+  for (int i = 0; i < argc; ++i)
+  {
+    p->oper.argv[i] = va_arg(mark, Node*);
+  }
+  va_end(mark);
+  return p;
+}
+
+Expr::Expr(CFieldDoc* pDoc)
+{
+  yyRoot = 0;
+  yyDoc = pDoc;
+  yyObjs.clear();
+}
+
+static void rm(Node* p)
+{
+  if (p)
+  {
+    switch (p->type)
+    {
+    case NUM_NODE:
+      delete (Number*) p;
+      break;
+    case FIELD_NODE:
+      delete (Field*) p;
+      break;
+    case OPER_NODE:
+      delete[] (char*) p;
+      break;
+    }
+  }
+}
+
+Expr::~Expr()
+{
+  for (std::list<Node*>::iterator p = yyObjs.begin(); p != yyObjs.end(); ++p)
+  {
+    rm(*p);
+  }
+  yyObjs.clear();
+}
+
+int Expr::Parse(const char* pData)
+{
+  yyData = pData;
+  return yyparse();
+}
+
+static farray ex(Node* p)
+{
+  if (p)
+  {
+    switch (p->type)
+    {
+    case NUM_NODE:
+      return farray(p->number.value, 1);
+
+    case FIELD_NODE:
+      {
+        hid_t id = p->field.data->id;
+        hid_t ds3 = H5Dget_space(id);
+
+        hsize_t start[3] = { yyLevel, 0, 0 };
+        hsize_t count[3] = { 1, yyDoc->cy, yyDoc->cx };
+        herr_t err = H5Sselect_hyperslab(ds3, H5S_SELECT_SET, start, NULL, count, NULL);
+
+        int nn = yyDoc->cx * yyDoc->cy;
+        count[0] = nn;
+        hid_t ds1 = H5Screate_simple(1, count, NULL);
+
+        farray arr(nn);
+        err = H5Dread(id, H5T_NATIVE_FLOAT, ds1, ds3, H5P_DEFAULT, &arr[0]);
+        err = H5Sclose(ds1);
+        err = H5Sclose(ds3);
+        return arr;
+      }
+
+    case OPER_NODE:
+      {
+        switch (p->oper.code)
+        {
+        case NEG_NODE:
+          return -ex(p->oper.argv[0]);
+
+        case ADD_NODE:
+          {
+            farray a1 = ex(p->oper.argv[0]);
+            farray a2 = ex(p->oper.argv[1]);
+            if (a1.size() < a2.size())
+            {
+              return a1[0] + a2;
+            }
+            if (a2.size() < a1.size())
+            {
+              return a1 + a2[0];
+            }
+            return a1 + a2;
+          }
+
+        case SUB_NODE:
+          {
+            farray a1 = ex(p->oper.argv[0]);
+            farray a2 = ex(p->oper.argv[1]);
+            if (a1.size() < a2.size())
+            {
+              return a1[0] - a2;
+            }
+            if (a2.size() < a1.size())
+            {
+              return a1 - a2[0];
+            }
+            return a1 - a2;
+          }
+
+        case MUL_NODE:
+          {
+            farray a1 = ex(p->oper.argv[0]);
+            farray a2 = ex(p->oper.argv[1]);
+            if (a1.size() < a2.size())
+            {
+              return a1[0] * a2;
+            }
+            if (a2.size() < a1.size())
+            {
+              return a1 * a2[0];
+            }
+            return a1 * a2;
+          }
+
+        case DIV_NODE:
+          {
+            farray a1 = ex(p->oper.argv[0]);
+            farray a2 = ex(p->oper.argv[1]);
+            if (a1.size() < a2.size())
+            {
+              return a1[0] / a2;
+            }
+            if (a2.size() < a1.size())
+            {
+              return a1 / a2[0];
+            }
+            return a1 / a2;
+          }
+        }
+      }
+      break;
+    }
+  }
+  ASSERT(0);
+  return farray();
+}
+
+farray Expr::Eval(int k)
+{
+  yyLevel = k;
+  return ex(yyRoot);
+}

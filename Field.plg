@@ -1,0 +1,102 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Field - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x419 /fo"Release/Field.res" /d "NDEBUG" /d "_AFXDLL" "D:\prj\field\lyn\Field.rc"" 
+Creating temporary file "C:\TEMP\RSP4D.tmp" with contents
+[
+/nologo /MD /W3 /GR /GX /O2 /Op /I "." /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/Field.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\prj\field\lyn\ActField.cpp"
+"D:\prj\field\lyn\CrossSection.cpp"
+"D:\prj\field\lyn\CumulativeS.cpp"
+"D:\prj\field\lyn\DataMapping.cpp"
+"D:\prj\field\lyn\DigitizeDlg.cpp"
+"D:\prj\field\lyn\Field.cpp"
+"D:\prj\field\lyn\FieldDoc.cpp"
+"D:\prj\field\lyn\FieldForm.cpp"
+"D:\prj\field\lyn\FieldImport.cpp"
+"D:\prj\field\lyn\FieldView.cpp"
+"D:\prj\field\lyn\FieldView_Prop.cpp"
+"D:\prj\field\lyn\FindWell.cpp"
+"D:\prj\field\lyn\IntegralProp.cpp"
+"D:\prj\field\lyn\MainFrm.cpp"
+"D:\prj\field\lyn\OverView.cpp"
+"D:\prj\field\lyn\PlotDialog.cpp"
+"D:\prj\field\lyn\ProbeDialog.cpp"
+"D:\prj\field\lyn\ResDialog.cpp"
+"D:\prj\field\lyn\redirect.cpp"
+]
+Creating command line "xicl6.exe @C:\TEMP\RSP4D.tmp" 
+Creating temporary file "C:\TEMP\RSP4E.tmp" with contents
+[
+/nologo /MD /W3 /GR /GX /O2 /Op /I "." /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/Field.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\prj\field\lyn\StdAfx.cpp"
+]
+Creating command line "xicl6.exe @C:\TEMP\RSP4E.tmp" 
+Creating temporary file "C:\TEMP\RSP4F.tmp" with contents
+[
+oxliba.lib msimg32.lib hdf5-1.6.1.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/Field.pdb" /machine:I386 /out:"Release/Field.exe" /libpath:"\prj\rle" /libpath:"\pkg\utb\lib\libs" 
+.\Release\ActField.obj
+.\Release\CrossSection.obj
+.\Release\CumulativeS.obj
+.\Release\DataMapping.obj
+.\Release\DigitizeDlg.obj
+.\Release\Field.obj
+.\Release\FieldDoc.obj
+.\Release\FieldForm.obj
+.\Release\FieldImport.obj
+.\Release\FieldView.obj
+.\Release\FieldView_Prop.obj
+.\Release\FindWell.obj
+.\Release\IntegralProp.obj
+.\Release\MainFrm.obj
+.\Release\OverView.obj
+.\Release\PlotDialog.obj
+.\Release\ProbeDialog.obj
+.\Release\ResDialog.obj
+.\Release\StdAfx.obj
+.\Release\Field.res
+.\Release\redirect.obj
+.\Release\stuff.lib
+]
+Creating command line "xilink6.exe @C:\TEMP\RSP4F.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Objective Grid will automatically link with og811a.lib
+Compiling...
+ActField.cpp
+CrossSection.cpp
+CumulativeS.cpp
+DataMapping.cpp
+DigitizeDlg.cpp
+Field.cpp
+FieldDoc.cpp
+FieldForm.cpp
+FieldImport.cpp
+FieldView.cpp
+FieldView_Prop.cpp
+FindWell.cpp
+IntegralProp.cpp
+MainFrm.cpp
+OverView.cpp
+PlotDialog.cpp
+ProbeDialog.cpp
+ResDialog.cpp
+redirect.cpp
+Generating Code...
+Linking...
+xilink6: executing 'C:\VC98\Bin\link.exe'
+
+
+
+<h3>Results</h3>
+Field.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

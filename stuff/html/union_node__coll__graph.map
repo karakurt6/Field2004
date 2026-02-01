@@ -1,0 +1,4 @@
+base referer
+rect $struct_oper.html 54,360 121,488
+rect $struct_field.html 8,8 74,104
+rect $struct_number.html 98,8 173,104

@@ -1,0 +1,113 @@
+  interface
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ! -- well_grid object interface
+
+    integer(4) function wg_create_uniform(cx, cy, x1, x2, y1, y2)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_create_uniform@40' :: wg_create_uniform
+      integer(4) cx, cy
+      real(8) x1, x2, y1, y2
+    end function
+
+    integer(4) function wg_create_nonuniform(cx, cy, init_x, init_y)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_create_nonuniform@16' :: wg_create_nonuniform
+      integer(4) cx, cy
+      real(8) init_x(:), init_y(:)
+    end function
+
+    subroutine wg_destroy(handle)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_destroy@4' :: wg_destroy
+      integer(4) handle
+    end subroutine
+
+    subroutine wg_update(handle, well)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_update@8' :: wg_update
+      integer(4) handle, well
+    end subroutine
+
+    subroutine wg_compute(handle, func)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_compute@8' :: wg_compute
+      integer(4) handle
+      external func
+    end subroutine
+
+    real(8) function wg_info(handle, well, x, y)
+    !dec$ attributes stdcall, dllimport, alias: '_wg_info@16' :: wg_info
+      integer(4) handle, well, x, y
+    end function
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ! -- polygon_grid object interface
+    
+    integer(4) function pg_create_uniform(cx, cy, x1, x2, y1, y2)
+    !dec$ attributes stdcall, dllimport, alias: '_pg_create_uniform@40' :: pg_create_uniform
+      integer(4) cx, cy
+      real(8) x1, x2, y1, y2
+    end function
+
+    integer(4) function pg_create_nonuniform(cx, cy, init_x, init_y)
+    !dec$ attributes stdcall, dllimport, alias: '_pg_create_nonuniform@16' :: pg_create_nonuniform
+      integer(4) cx, cy
+      real(8) init_x(*), init_y(*)
+    end function
+
+    subroutine pg_destroy(handle)
+    !dec$ attributes stdcall, dllimport, alias: '_pg_destroy@4' :: pg_destroy
+      integer(4) handle
+    end subroutine
+
+    real(8) function pg_info(handle, x, y)
+    !dec$ attributes stdcall, dllimport, alias: '_pg_info@12' :: pg_info
+      integer(4) handle, x, y
+    end function
+
+    ! -- координаты (x, y) задают вершины простого (без самопересечений) многоугольника
+    ! -- обход замкнутой области осуществляется против часовой стрелки
+    subroutine pg_populate(handle, n, x, y)
+    !dec$ attributes stdcall, dllimport, alias: '_pg_populate@16' :: pg_populate
+      integer(4) n, handle
+      real(8) x(*), y(*)
+    end subroutine
+
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ! -- well_hull object interface
+
+    integer(4) function wh_create()
+    !dec$ attributes stdcall, dllimport, alias: '_wh_create@0' :: wh_create
+    end function
+
+    subroutine wh_destroy(handle)
+    !dec$ attributes stdcall, dllimport, alias: '_wh_destroy@4' :: wh_destroy
+      integer(4) handle
+    end subroutine
+
+    subroutine wh_update(handle, well)
+    !dec$ attributes stdcall, dllimport, alias: '_wh_update@8' :: wh_update
+      integer(4) handle, well
+    end subroutine
+
+    subroutine wh_clear(handle)
+    !dec$ attributes stdcall, dllimport, alias: '_wh_clear@4' :: wh_clear
+      integer(4) handle
+    end subroutine
+
+    subroutine wh_remove(handle, well)
+    !dec$ attributes stdcall, dllimport, alias: '_wh_remove@8' :: wh_remove
+      integer(4) handle, well
+    end subroutine
+
+    integer(4) function wh_chull(handle, delta, n, coord_x, coord_y)
+    !dec$ attributes stdcall, dllimport, alias: '_wh_chull@24' :: wh_chull
+    !dec$ attributes reference :: n
+      integer(4) handle, n
+      real(8) delta, coord_x(*), coord_y(*)
+    end function
+    
+  end interface
+
+  type well_type
+    character*8 name
+    real(4) top_x, top_y
+    integer inj
+  end type well_type
+

@@ -1,0 +1,99 @@
+#Inventor V1.0 ascii
+
+#########################  STREAM TAB ################
+      RowDialog {
+        label "Stream"
+        auditorID "StreamTab"
+        rowSpacing 10
+        height 350
+        fixedHeight TRUE
+
+        ###################  StreamLines ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+
+          DialogLabel {
+            label "StreamLines"
+          }
+          ColumnDialog {
+            DialogCheckBox {
+              label "Enable"
+              auditorID "StreamLinesEnable"
+            }
+            DialogComboBox {
+              label "Style"
+              maxWidth 200
+              items  ["line", "line & particle", "tadpole", "point", "sphere", "surface" ]
+              auditorID "StreamLinesStyle"  
+            }
+          }
+        }
+
+        ###################  Source ################
+        RowDialog {
+          edgeStyle  SHADOW_IN
+
+          DialogLabel {
+            label "Sources of streamlines"
+          }
+          DialogComboBox {
+            label "Shape type"
+            maxWidth 150
+            items  ["circle", "line"]
+            auditorID "SourceShapeType"  
+          }
+          DialogRealSlider {
+            label "Shape size"
+            min 0
+            max 10
+            value 5
+            auditorID "SourceShapeSize"
+          }
+          DialogIntegerSlider {
+            label "#Start points"
+            min 0
+            max 10
+            value 5
+            auditorID "SourceStartPoints"
+          }
+        }
+
+        ###################  Animation #############
+        RowDialog {
+          edgeStyle  SHADOW_IN
+
+          DialogLabel {
+            label "Particle Animation"
+          }
+          DialogCheckBox {
+            label "Random start"
+            auditorID "AnimationRandomStart"
+          }
+          DialogRealSlider {
+            label "Particle time step"
+            min 0
+            max 10
+            value 5
+            auditorID "AnimationParticuleTimeStep"
+          }
+          DialogRealSlider {
+            label "Length of tadpole"
+            min 0
+            max 10
+            value 5
+            auditorID "AnimationLengthOfTadpole"
+          }
+          ColumnDialog {
+            DialogCheckBox {
+              label "Blinker"
+              auditorID "AnimationBlinker"
+            }
+            DialogPushButton {
+              label "#frame"
+              buttonLabel "++"
+              auditorID "AnimationFrame"
+            }
+          }
+        }
+      }
+

@@ -1,0 +1,431 @@
+%!PS-Adobe-3.0
+%%DocumentMedia: a4 595 842 80 white ( )
+%%Orientation: Portrait
+%%Pages: 1
+%%Page: 1 1
+
+% s x0 y0 tsize x1 y1 x2 y2
+% returns a bounding box
+% (x1 x2) x (y1 y2) around
+% text string 's'
+/tsize
+{
+  gsave
+  newpath
+  moveto
+  true charpath
+  flattenpath
+  pathbbox
+  grestore
+}
+def
+
+% x y a s ctext -
+% plots a text string 's'
+% centered at point (x y)
+% and rotated by angle 'a'
+/ctext
+{
+  matrix currentmatrix
+  4 index 4 index translate
+  1 index 0 0 tsize
+  3 -1 roll pop
+  3 -1 roll pop
+  -2 div exch
+  -2 div exch
+  0 0 moveto
+  rmoveto
+  currentpoint
+  4 index rotate
+  moveto
+  1 index show
+  setmatrix
+  pop pop pop pop
+}
+def
+
+% x y a s crect -
+% strokes a rectangle
+% around text string 's'
+% centered at point (x y)
+% and rotated by angle 'a'
+/crect
+{
+  matrix currentmatrix
+  4 index 4 index translate
+  1 index 0 0 tsize
+  3 -1 roll pop
+  3 -1 roll pop
+  -2 div exch
+  -2 div exch
+  0 0 moveto
+  rmoveto
+  1 index currentpoint tsize
+  2 index sub exch
+  3 index sub exch
+  6 index rotate
+  3 index 3 index moveto
+  1 index 0 rlineto
+  0 1 index rlineto
+  1 index neg 0 rlineto
+  0 1 index neg rlineto
+  pop pop pop pop
+  setmatrix
+  pop pop pop pop
+}
+def
+
+% x y a s ltext -
+% plots a text string 's' with left side
+% adjusted to point (x, y)
+% and rotated by angle 'a'
+/ltext
+{
+  matrix currentmatrix
+  4 index 4 index translate
+  1 index 0 0 tsize
+  3 -1 roll pop
+  3 -1 roll pop
+  -2 div exch
+  pop dup neg exch
+  0 0 moveto
+  rmoveto
+  currentpoint
+  4 index rotate
+  moveto
+  1 index show
+  setmatrix
+  pop pop pop pop
+}
+def
+
+% x y a s rtext -
+% plots a text string 's' with right side
+% adjusted to point (x, y)
+% and rotated by angle 'a'
+/rtext
+{
+  matrix currentmatrix
+  4 index 4 index translate
+  1 index 0 0 tsize
+  3 -1 roll pop
+  3 -1 roll pop
+  -2 div exch
+  neg 1 index add exch
+  0 0 moveto
+  rmoveto
+  currentpoint
+  4 index rotate
+  moveto
+  1 index show
+  setmatrix
+  pop pop pop pop
+}
+def
+
+/Times-Roman findfont 6 scalefont setfont
+0.2 setgray 0.5 setlinewidth
+59.5 84.2 270 (100) ltext
+newpath 59.5 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 64.26 84.2 moveto 0 673.6 rlineto stroke
+newpath 69.02 84.2 moveto 0 673.6 rlineto stroke
+newpath 73.78 84.2 moveto 0 673.6 rlineto stroke
+newpath 78.54 84.2 moveto 0 673.6 rlineto stroke
+newpath 83.3 84.2 moveto 0 673.6 rlineto stroke
+newpath 88.06 84.2 moveto 0 673.6 rlineto stroke
+newpath 92.82 84.2 moveto 0 673.6 rlineto stroke
+newpath 97.58 84.2 moveto 0 673.6 rlineto stroke
+newpath 102.34 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+107.1 84.2 270 (110) ltext
+newpath 107.1 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 111.86 84.2 moveto 0 673.6 rlineto stroke
+newpath 116.62 84.2 moveto 0 673.6 rlineto stroke
+newpath 121.38 84.2 moveto 0 673.6 rlineto stroke
+newpath 126.14 84.2 moveto 0 673.6 rlineto stroke
+newpath 130.9 84.2 moveto 0 673.6 rlineto stroke
+newpath 135.66 84.2 moveto 0 673.6 rlineto stroke
+newpath 140.42 84.2 moveto 0 673.6 rlineto stroke
+newpath 145.18 84.2 moveto 0 673.6 rlineto stroke
+newpath 149.94 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+154.7 84.2 270 (120) ltext
+newpath 154.7 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 159.46 84.2 moveto 0 673.6 rlineto stroke
+newpath 164.22 84.2 moveto 0 673.6 rlineto stroke
+newpath 168.98 84.2 moveto 0 673.6 rlineto stroke
+newpath 173.74 84.2 moveto 0 673.6 rlineto stroke
+newpath 178.5 84.2 moveto 0 673.6 rlineto stroke
+newpath 183.26 84.2 moveto 0 673.6 rlineto stroke
+newpath 188.02 84.2 moveto 0 673.6 rlineto stroke
+newpath 192.78 84.2 moveto 0 673.6 rlineto stroke
+newpath 197.54 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+202.3 84.2 270 (130) ltext
+newpath 202.3 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 207.06 84.2 moveto 0 673.6 rlineto stroke
+newpath 211.82 84.2 moveto 0 673.6 rlineto stroke
+newpath 216.58 84.2 moveto 0 673.6 rlineto stroke
+newpath 221.34 84.2 moveto 0 673.6 rlineto stroke
+newpath 226.1 84.2 moveto 0 673.6 rlineto stroke
+newpath 230.86 84.2 moveto 0 673.6 rlineto stroke
+newpath 235.62 84.2 moveto 0 673.6 rlineto stroke
+newpath 240.38 84.2 moveto 0 673.6 rlineto stroke
+newpath 245.14 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+249.9 84.2 270 (140) ltext
+newpath 249.9 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 254.66 84.2 moveto 0 673.6 rlineto stroke
+newpath 259.42 84.2 moveto 0 673.6 rlineto stroke
+newpath 264.18 84.2 moveto 0 673.6 rlineto stroke
+newpath 268.94 84.2 moveto 0 673.6 rlineto stroke
+newpath 273.7 84.2 moveto 0 673.6 rlineto stroke
+newpath 278.46 84.2 moveto 0 673.6 rlineto stroke
+newpath 283.22 84.2 moveto 0 673.6 rlineto stroke
+newpath 287.98 84.2 moveto 0 673.6 rlineto stroke
+newpath 292.74 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+297.5 84.2 270 (150) ltext
+newpath 297.5 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 302.26 84.2 moveto 0 673.6 rlineto stroke
+newpath 307.02 84.2 moveto 0 673.6 rlineto stroke
+newpath 311.78 84.2 moveto 0 673.6 rlineto stroke
+newpath 316.54 84.2 moveto 0 673.6 rlineto stroke
+newpath 321.3 84.2 moveto 0 673.6 rlineto stroke
+newpath 326.06 84.2 moveto 0 673.6 rlineto stroke
+newpath 330.82 84.2 moveto 0 673.6 rlineto stroke
+newpath 335.58 84.2 moveto 0 673.6 rlineto stroke
+newpath 340.34 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+345.1 84.2 270 (160) ltext
+newpath 345.1 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 349.86 84.2 moveto 0 673.6 rlineto stroke
+newpath 354.62 84.2 moveto 0 673.6 rlineto stroke
+newpath 359.38 84.2 moveto 0 673.6 rlineto stroke
+newpath 364.14 84.2 moveto 0 673.6 rlineto stroke
+newpath 368.9 84.2 moveto 0 673.6 rlineto stroke
+newpath 373.66 84.2 moveto 0 673.6 rlineto stroke
+newpath 378.42 84.2 moveto 0 673.6 rlineto stroke
+newpath 383.18 84.2 moveto 0 673.6 rlineto stroke
+newpath 387.94 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+392.7 84.2 270 (170) ltext
+newpath 392.7 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 397.46 84.2 moveto 0 673.6 rlineto stroke
+newpath 402.22 84.2 moveto 0 673.6 rlineto stroke
+newpath 406.98 84.2 moveto 0 673.6 rlineto stroke
+newpath 411.74 84.2 moveto 0 673.6 rlineto stroke
+newpath 416.5 84.2 moveto 0 673.6 rlineto stroke
+newpath 421.26 84.2 moveto 0 673.6 rlineto stroke
+newpath 426.02 84.2 moveto 0 673.6 rlineto stroke
+newpath 430.78 84.2 moveto 0 673.6 rlineto stroke
+newpath 435.54 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+440.3 84.2 270 (180) ltext
+newpath 440.3 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 445.06 84.2 moveto 0 673.6 rlineto stroke
+newpath 449.82 84.2 moveto 0 673.6 rlineto stroke
+newpath 454.58 84.2 moveto 0 673.6 rlineto stroke
+newpath 459.34 84.2 moveto 0 673.6 rlineto stroke
+newpath 464.1 84.2 moveto 0 673.6 rlineto stroke
+newpath 468.86 84.2 moveto 0 673.6 rlineto stroke
+newpath 473.62 84.2 moveto 0 673.6 rlineto stroke
+newpath 478.38 84.2 moveto 0 673.6 rlineto stroke
+newpath 483.14 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+487.9 84.2 270 (190) ltext
+newpath 487.9 84.2 moveto 0 673.6 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 492.66 84.2 moveto 0 673.6 rlineto stroke
+newpath 497.42 84.2 moveto 0 673.6 rlineto stroke
+newpath 502.18 84.2 moveto 0 673.6 rlineto stroke
+newpath 506.94 84.2 moveto 0 673.6 rlineto stroke
+newpath 511.7 84.2 moveto 0 673.6 rlineto stroke
+newpath 516.46 84.2 moveto 0 673.6 rlineto stroke
+newpath 521.22 84.2 moveto 0 673.6 rlineto stroke
+newpath 525.98 84.2 moveto 0 673.6 rlineto stroke
+newpath 530.74 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+535.5 84.2 270 (200) ltext
+newpath 535.5 84.2 moveto 0 673.6 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 84.2 0 (0.0001) rtext
+newpath 59.5 84.2 moveto 476 0 rlineto stroke
+59.5 210.322 0 (0.01) rtext
+newpath 59.5 210.322 moveto 476 0 rlineto stroke
+59.5 235.009 0 (0.02) rtext
+newpath 59.5 235.009 moveto 476 0 rlineto stroke
+59.5 250.672 0 (0.03) rtext
+newpath 59.5 250.672 moveto 476 0 rlineto stroke
+59.5 262.455 0 (0.04) rtext
+newpath 59.5 262.455 moveto 476 0 rlineto stroke
+59.5 272.039 0 (0.05) rtext
+newpath 59.5 272.039 moveto 476 0 rlineto stroke
+59.5 280.197 0 (0.06) rtext
+newpath 59.5 280.197 moveto 476 0 rlineto stroke
+59.5 287.35 0 (0.07) rtext
+newpath 59.5 287.35 moveto 476 0 rlineto stroke
+59.5 293.755 0 (0.08) rtext
+newpath 59.5 293.755 moveto 476 0 rlineto stroke
+59.5 299.579 0 (0.09) rtext
+newpath 59.5 299.579 moveto 476 0 rlineto stroke
+59.5 304.941 0 (0.1) rtext
+newpath 59.5 304.941 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 309.924 moveto 476 0 rlineto stroke
+newpath 59.5 314.591 moveto 476 0 rlineto stroke
+newpath 59.5 318.992 moveto 476 0 rlineto stroke
+newpath 59.5 323.165 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 327.139 0 (0.15) rtext
+newpath 59.5 327.139 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 330.94 moveto 476 0 rlineto stroke
+newpath 59.5 334.589 moveto 476 0 rlineto stroke
+newpath 59.5 338.103 moveto 476 0 rlineto stroke
+newpath 59.5 341.496 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 344.781 0 (0.2) rtext
+newpath 59.5 344.781 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 347.969 moveto 476 0 rlineto stroke
+newpath 59.5 351.069 moveto 476 0 rlineto stroke
+newpath 59.5 354.089 moveto 476 0 rlineto stroke
+newpath 59.5 357.036 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 359.917 0 (0.25) rtext
+newpath 59.5 359.917 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 362.738 moveto 476 0 rlineto stroke
+newpath 59.5 365.503 moveto 476 0 rlineto stroke
+newpath 59.5 368.217 moveto 476 0 rlineto stroke
+newpath 59.5 370.885 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 373.509 0 (0.3) rtext
+newpath 59.5 373.509 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 376.095 moveto 476 0 rlineto stroke
+newpath 59.5 378.644 moveto 476 0 rlineto stroke
+newpath 59.5 381.161 moveto 476 0 rlineto stroke
+newpath 59.5 383.647 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 386.105 0 (0.35) rtext
+newpath 59.5 386.105 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 388.537 moveto 476 0 rlineto stroke
+newpath 59.5 390.947 moveto 476 0 rlineto stroke
+newpath 59.5 393.335 moveto 476 0 rlineto stroke
+newpath 59.5 395.704 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 398.056 0 (0.4) rtext
+newpath 59.5 398.056 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 400.393 moveto 476 0 rlineto stroke
+newpath 59.5 402.716 moveto 476 0 rlineto stroke
+newpath 59.5 405.027 moveto 476 0 rlineto stroke
+newpath 59.5 407.328 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 409.62 0 (0.45) rtext
+newpath 59.5 409.62 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 411.905 moveto 476 0 rlineto stroke
+newpath 59.5 414.183 moveto 476 0 rlineto stroke
+newpath 59.5 416.458 moveto 476 0 rlineto stroke
+newpath 59.5 418.73 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 421 0 (0.5) rtext
+newpath 59.5 421 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 423.27 moveto 476 0 rlineto stroke
+newpath 59.5 425.542 moveto 476 0 rlineto stroke
+newpath 59.5 427.817 moveto 476 0 rlineto stroke
+newpath 59.5 430.095 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 432.38 0 (0.55) rtext
+newpath 59.5 432.38 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 434.672 moveto 476 0 rlineto stroke
+newpath 59.5 436.973 moveto 476 0 rlineto stroke
+newpath 59.5 439.284 moveto 476 0 rlineto stroke
+newpath 59.5 441.607 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 443.944 0 (0.6) rtext
+newpath 59.5 443.944 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 446.296 moveto 476 0 rlineto stroke
+newpath 59.5 448.665 moveto 476 0 rlineto stroke
+newpath 59.5 451.053 moveto 476 0 rlineto stroke
+newpath 59.5 453.463 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 455.895 0 (0.65) rtext
+newpath 59.5 455.895 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 458.353 moveto 476 0 rlineto stroke
+newpath 59.5 460.839 moveto 476 0 rlineto stroke
+newpath 59.5 463.356 moveto 476 0 rlineto stroke
+newpath 59.5 465.905 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 468.491 0 (0.7) rtext
+newpath 59.5 468.491 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 471.115 moveto 476 0 rlineto stroke
+newpath 59.5 473.783 moveto 476 0 rlineto stroke
+newpath 59.5 476.497 moveto 476 0 rlineto stroke
+newpath 59.5 479.262 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 482.083 0 (0.75) rtext
+newpath 59.5 482.083 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 484.964 moveto 476 0 rlineto stroke
+newpath 59.5 487.911 moveto 476 0 rlineto stroke
+newpath 59.5 490.931 moveto 476 0 rlineto stroke
+newpath 59.5 494.031 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 497.219 0 (0.8) rtext
+newpath 59.5 497.219 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 500.504 moveto 476 0 rlineto stroke
+newpath 59.5 503.897 moveto 476 0 rlineto stroke
+newpath 59.5 507.411 moveto 476 0 rlineto stroke
+newpath 59.5 511.06 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 514.861 0 (0.85) rtext
+newpath 59.5 514.861 moveto 476 0 rlineto stroke
+0.5 setgray 0.1 setlinewidth
+newpath 59.5 518.835 moveto 476 0 rlineto stroke
+newpath 59.5 523.008 moveto 476 0 rlineto stroke
+newpath 59.5 527.409 moveto 476 0 rlineto stroke
+newpath 59.5 532.076 moveto 476 0 rlineto stroke
+0.2 setgray 0.5 setlinewidth
+59.5 537.059 0 (0.9) rtext
+newpath 59.5 537.059 moveto 476 0 rlineto stroke
+59.5 542.421 0 (0.91) rtext
+newpath 59.5 542.421 moveto 476 0 rlineto stroke
+59.5 548.245 0 (0.92) rtext
+newpath 59.5 548.245 moveto 476 0 rlineto stroke
+59.5 554.65 0 (0.93) rtext
+newpath 59.5 554.65 moveto 476 0 rlineto stroke
+59.5 561.803 0 (0.94) rtext
+newpath 59.5 561.803 moveto 476 0 rlineto stroke
+59.5 569.961 0 (0.95) rtext
+newpath 59.5 569.961 moveto 476 0 rlineto stroke
+59.5 579.545 0 (0.96) rtext
+newpath 59.5 579.545 moveto 476 0 rlineto stroke
+59.5 591.328 0 (0.97) rtext
+newpath 59.5 591.328 moveto 476 0 rlineto stroke
+59.5 606.991 0 (0.98) rtext
+newpath 59.5 606.991 moveto 476 0 rlineto stroke
+59.5 631.678 0 (0.99) rtext
+newpath 59.5 631.678 moveto 476 0 rlineto stroke
+59.5 757.8 0 (0.9999) rtext
+newpath 59.5 757.8 moveto 476 0 rlineto stroke
+showpage

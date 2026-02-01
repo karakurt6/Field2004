@@ -1,0 +1,10 @@
+void check_clip(psstream& out, const char* file);
+void check_frame(psstream& out);
+void check_hull();
+void check_incurve();
+void check_voro(psstream& out, const char* file);
+void check_bbox();
+void check_clip_convex();
+void check_conrec(psstream& out, const char* file);
+void check_trilin(psstream& out);
+void check_bitmap(psstream& out, const char* file);

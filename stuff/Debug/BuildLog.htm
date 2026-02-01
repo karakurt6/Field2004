@@ -1,0 +1,67 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: stuff, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "C:\WINDOWS\TEMP\BAT000043.bat" with contents
+[
+@echo off
+nmake /nologo goal
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Makefile project actions"
+exit 1
+:VCEnd
+]
+Creating command line "C:\WINDOWS\TEMP\BAT000043.bat"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Makefile project actions
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_font.obj ps_font.cpp
+ps_font.cpp
+ link /DEBUG /DEBUGTYPE:cv  /INCREMENTAL:NO /NOLOGO -subsystem:console,5.01 kernel32.lib  ws2_32.lib mswsock.lib advapi32.lib bufferoverflowu.lib /out:..\Debug\ps_font.exe ..\Debug\ps_font.obj
+ ..\Debug\ps_font.exe
+ rc /fo..\Debug\ps_font.res ps_font.rc
+ link /dll /nologo /noentry /machine:x86 /out:..\Debug\ps_font.dll ..\Debug\ps_font.res
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_blin.obj ps_blin.cpp
+ps_blin.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_clip.obj ps_clip.cpp
+ps_clip.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_conrec.obj ps_conrec.cpp
+ps_conrec.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_grid.obj ps_grid.cpp
+ps_grid.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_image.obj ps_image.cpp
+ps_image.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_label.obj ps_label.cpp
+ps_label.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_proc.obj ps_proc.cpp
+ps_proc.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_stream.obj ps_stream.cpp
+ps_stream.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_text.obj ps_text.cpp
+ps_text.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_voro.obj ps_voro.cpp
+ps_voro.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_cross.obj ps_cross.cpp
+ps_cross.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\ps_bbox.obj ps_bbox.cpp
+ps_bbox.cpp
+ icl /WX /Qlong_double -c -DCRTAPI1=_cdecl -DCRTAPI2=_cdecl -nologo -GS -D_X86_=1  -DWIN32 -D_WIN32 -W3 -D_WINNT -D_WIN32_WINNT=0x0501 -D_WIN32_IE=0x0600 -DWINVER=0x0501 -Zi -Od -DDEBUG  -D_MT -D_DLL -MDd /Fd..\Debug\stuff_debug.pdb /GX /Fo..\Debug\surface_pick.obj surface_pick.cpp
+surface_pick.cpp
+ lib /nologo /out:..\Debug\stuff_debug.lib ..\Debug\ps_blin.obj ..\Debug\ps_clip.obj ..\Debug\ps_conrec.obj ..\Debug\ps_grid.obj ..\Debug\ps_image.obj ..\Debug\ps_label.obj ..\Debug\ps_proc.obj ..\Debug\ps_stream.obj ..\Debug\ps_text.obj ..\Debug\ps_voro.obj ..\Debug\ps_cross.obj ..\Debug\ps_bbox.obj ..\Debug\surface_pick.obj
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://i:\prj\field\curr\stuff\Debug\BuildLog.htm"
+stuff - 0 error(s), 0 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

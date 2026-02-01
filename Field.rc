@@ -1,0 +1,1070 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Field.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Field.ico"
+IDR_FIELDTYPE           ICON                    "res\\FieldDoc.ico"
+IDI_SAVE                ICON                    "res\\save.ico"
+IDI_OPEN                ICON                    "res\\open.ico"
+IDI_3DDATA              ICON                    "res\\3DdataMaster.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDB_EDIT_UP             BITMAP                  "res\\elb_up.bmp"
+IDB_EDIT_DN             BITMAP                  "res\\elb_down.bmp"
+IDB_EDIT_DEL            BITMAP                  "res\\elb_del.bmp"
+IDB_EDIT_ADD            BITMAP                  "res\\elb_add.bmp"
+IDB_RADIO_BUTTON        BITMAP                  "res\\stateicon.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+    BUTTON      ID_CONTEXT_HELP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Cross Section",              ID_VIEW_CROSS_SECTION
+        MENUITEM "Cell &Probe",                 ID_PROBE_GRID
+        MENUITEM "Cumulative &S",               ID_SATURATION
+        MENUITEM "&Resources",                  ID_RESDIALOG
+        MENUITEM "&Integral Prop",              ID_FIELD_EXPR
+        MENUITEM "&Find Well",                  ID_FINDWELL
+        MENUITEM "&Well Match",                 ID_VIEW_WELLMATCH
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help Topics",                ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&About Field...",             ID_APP_ABOUT
+    END
+END
+
+IDR_FIELD_VIEW MENU 
+BEGIN
+    POPUP "&Field"
+    BEGIN
+        MENUITEM "Toggle ColorMapping",         ID_FIELD_COLORING
+        MENUITEM "Toggle ScaleBar",             ID_FIELD_SCALE
+        MENUITEM "Query Wellbore",              ID_FIELD_QUERYWELLBORE
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_FIELD_VIEW_PROP
+        MENUITEM "3D Visualization",            ID_FIELD_START3DVIEWER
+        MENUITEM "Inclinometry",                ID_INCLINOMETRY
+    END
+END
+
+IDR_CROSS_SECTION MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Load",                       ID_FILE_OPEN
+        MENUITEM "&Store",                      ID_FILE_SAVE
+    END
+    MENUITEM "&Options",                    ID_PLOT_PROPERTIES
+END
+
+IDR_FIELD_EXPR MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open",                       ID_FILE_OPEN
+        MENUITEM "&Save",                       ID_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+    END
+END
+
+IDR_FRAGMENT MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Save",                       ID_FILE_SAVE
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT
+    VK_F1,          ID_HELP,                VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Field"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Field Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_FIELD_GRID DIALOG  0, 0, 250, 63
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Grid Lines"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Turn off grid lines",IDC_RADIO1,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,7,13,224,13
+    CONTROL         "Draw grid lines through nodes",IDC_RADIO2,"Button",
+                    BS_AUTORADIOBUTTON,7,25,224,13
+    CONTROL         "Draw grid lines between cells",IDC_RADIO3,"Button",
+                    BS_AUTORADIOBUTTON,7,37,224,13
+END
+
+IDD_FIELD_DATA DIALOG  0, 0, 250, 63
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Grid Data"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "View grid as solid cells",IDC_RADIO1,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,7,13,224,13
+    CONTROL         "View grid with interpolated colors between nodes",
+                    IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,7,25,224,13
+    CONTROL         "View grid as contour levels based on current color lookup table",
+                    IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,7,37,224,13
+END
+
+IDD_FIELD_FORM DIALOGEX 0, 0, 717, 101
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "MonthCalendar1",IDC_MONTHCALENDAR1,"SysMonthCal32",
+                    MCS_NOTODAY | MCS_NOTODAYCIRCLE | WS_TABSTOP,7,7,133,87,
+                    WS_EX_CLIENTEDGE
+    GROUPBOX        "Production wells",IDC_STATIC,145,7,226,87
+    CONTROL         "List1",IDC_INJLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_AUTOARRANGE | LVS_ALIGNLEFT | LVS_NOSORTHEADER | 
+                    WS_TABSTOP,151,17,215,71,WS_EX_CLIENTEDGE
+    GROUPBOX        "Injection wells",IDC_STATIC,375,7,131,87
+    CONTROL         "List1",IDC_EXTLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_AUTOARRANGE | LVS_ALIGNLEFT | LVS_NOSORTHEADER | 
+                    WS_TABSTOP,380,17,121,71,WS_EX_CLIENTEDGE
+    CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    WS_TABSTOP,512,60,131,18
+    CONTROL         "",IDC_LAYER,"Static",SS_ETCHEDFRAME | NOT WS_VISIBLE,
+                    521,78,113,18
+    EDITTEXT        IDC_EDIT1,644,59,31,15,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_SPIN1,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,676,60,11,
+                    13
+    GROUPBOX        "Visible layer",IDC_STATIC,511,51,174,42
+    GROUPBOX        "Property",IDC_STATIC,512,7,174,37
+    COMBOBOX        IDC_COMBO1,518,19,163,75,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_CROSS_SECTION DIALOGEX 0, 0, 281, 261
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cross-Section"
+MENU IDR_CROSS_SECTION
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Plot",ID_PLOT_CROSS_SECTION,72,240,50,14
+    PUSHBUTTON      "Hide",IDCANCEL,159,240,50,14
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | WS_TABSTOP,7,21,
+                    267,200,WS_EX_CLIENTEDGE
+    CONTROL         "Run:",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    7,222,29,12
+    EDITTEXT        IDC_EDIT1,37,222,237,13,ES_AUTOHSCROLL | WS_DISABLED
+    EDITTEXT        IDC_EDIT2,7,7,218,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Button1",IDC_BUTTON1,260,7,14,12,BS_BITMAP
+    PUSHBUTTON      "Button1",IDC_BUTTON2,244,7,14,12,BS_BITMAP
+    PUSHBUTTON      "Button1",IDC_BUTTON3,228,7,14,12,BS_BITMAP
+END
+
+IDD_PLOT_PROPERTIES DIALOGEX 0, 0, 308, 194
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Plotting Options"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,63,173,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,195,173,50,14
+    GROUPBOX        "Preview",IDC_STATIC,196,7,105,93
+    GROUPBOX        "Page",IDC_STATIC,7,7,184,93
+    COMBOBOX        IDC_COMBO1,65,18,36,45,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    RTEXT           "Paper size",IDC_STATIC,15,18,46,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT1,65,34,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,65,49,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,65,64,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,65,79,36,12,ES_AUTOHSCROLL
+    RTEXT           "Left margin",IDC_STATIC,15,34,46,11,SS_CENTERIMAGE
+    RTEXT           "Right margin",IDC_STATIC,15,50,46,11,SS_CENTERIMAGE
+    RTEXT           "Top margin",IDC_STATIC,15,65,46,11,SS_CENTERIMAGE
+    RTEXT           "Bottom margin",IDC_STATIC,15,79,46,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT2,150,18,32,12,ES_AUTOHSCROLL
+    RTEXT           "Pages",IDC_STATIC,104,18,42,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT6,150,34,32,12,ES_AUTOHSCROLL
+    RTEXT           "X major tick",IDC_STATIC,104,34,42,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT7,150,49,32,12,ES_AUTOHSCROLL
+    RTEXT           "X minor tick",IDC_STATIC,104,50,42,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT8,150,64,32,12,ES_AUTOHSCROLL
+    RTEXT           "Y major tick",IDC_STATIC,104,64,42,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT9,150,79,32,12,ES_AUTOHSCROLL
+    RTEXT           "Y minor tick",IDC_STATIC,104,79,42,13,SS_CENTERIMAGE
+    CONTROL         "Landscape",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFTTEXT | WS_GROUP,15,114,56,11
+    CONTROL         "Portrait",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | 
+                    BS_LEFTTEXT,15,126,56,11
+    GROUPBOX        "Orientation",IDC_STATIC,7,102,71,40
+    GROUPBOX        "Font",IDC_STATIC,82,102,110,40
+    EDITTEXT        IDC_EDIT12,119,126,67,12,ES_AUTOHSCROLL
+    LTEXT           "Name",IDC_STATIC,87,113,23,9,SS_CENTERIMAGE
+    LTEXT           "Size",IDC_STATIC,87,126,23,9,SS_CENTERIMAGE
+    CONTROL         "Show grid",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,196,106,105,9
+    CONTROL         "Show legend",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,196,115,105,9
+    CONTROL         "Page numbering",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,196,124,105,10
+    EDITTEXT        IDC_EDIT10,47,153,254,13,ES_AUTOHSCROLL
+    LTEXT           "Description: ",IDC_STATIC,7,154,40,13
+    COMBOBOX        IDC_COMBO3,119,110,67,57,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "Show formation",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,196,134,105,10
+END
+
+IDD_EDIT_COLOR DIALOG  2, 0, 298, 208
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Color Item Dialog"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "&Basic Colors:",IDC_STATIC,4,4,140,9
+    CONTROL         "",COLOR_BOX1,"Static",SS_SIMPLE | WS_GROUP | WS_TABSTOP,
+                    4,14,140,86
+    LTEXT           "&Custom Colors:",IDC_STATIC,4,106,140,9
+    CONTROL         "",COLOR_CUSTOM1,"Static",SS_SIMPLE | WS_GROUP | 
+                    WS_TABSTOP,4,116,140,28
+    PUSHBUTTON      "&Define Custom Colors...",COLOR_MIX,4,150,140,14,
+                    WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,152,188,44,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,201,188,44,14,WS_GROUP
+    PUSHBUTTON      "&Help",1038,250,188,44,14,WS_GROUP
+    CONTROL         "",COLOR_RAINBOW,"Static",SS_BLACKFRAME,152,4,118,116
+    CONTROL         "",COLOR_LUMSCROLL,"Static",SS_SIMPLE,280,4,8,116
+    CONTROL         "",COLOR_CURRENT,"Static",SS_BLACKFRAME,152,124,40,26
+    PUSHBUTTON      "&o",COLOR_SOLID,300,200,4,14,WS_GROUP
+    RTEXT           "Color|",IDC_STATIC,152,151,20,9
+    LTEXT           "S&olid",IDC_STATIC,172,151,20,9
+    RTEXT           "&Hue:",COLOR_HUEACCEL,194,126,20,9
+    EDITTEXT        COLOR_HUE,216,124,18,12,WS_GROUP
+    RTEXT           "&Sat:",COLOR_SATACCEL,194,140,20,9
+    EDITTEXT        COLOR_SAT,216,138,18,12,WS_GROUP
+    RTEXT           "&Lum:",COLOR_LUMACCEL,194,154,20,9
+    EDITTEXT        COLOR_LUM,216,152,18,12,WS_GROUP
+    RTEXT           "&Red:",COLOR_REDACCEL,243,126,24,9
+    EDITTEXT        COLOR_RED,269,124,18,12,WS_GROUP
+    RTEXT           "&Green:",COLOR_GREENACCEL,243,140,24,9
+    EDITTEXT        COLOR_GREEN,269,138,18,12,WS_GROUP
+    RTEXT           "Bl&ue:",COLOR_BLUEACCEL,243,154,24,9
+    EDITTEXT        COLOR_BLUE,269,152,18,12,WS_GROUP
+    PUSHBUTTON      "&Add to Custom Colors",COLOR_ADD,152,168,142,14,
+                    WS_GROUP
+    EDITTEXT        1004,104,168,39,14,ES_AUTOHSCROLL
+    EDITTEXT        1002,48,188,95,14,ES_AUTOHSCROLL
+    RTEXT           "Comment: ",IDC_STATIC,5,188,39,14,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    RTEXT           "Specify color threshold value: ",IDC_STATIC,5,168,96,14,
+                    SS_CENTERIMAGE | SS_SUNKEN
+END
+
+IDD_COLOR_LIST DIALOG  0, 0, 186, 311
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Data to color mapping"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,33,290,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,101,290,50,14
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_EDITLABELS | 
+                    LVS_OWNERDRAWFIXED | WS_BORDER | WS_TABSTOP,7,21,172,267
+    PUSHBUTTON      "Button1",IDC_BUTTON3,149,7,14,12,BS_BITMAP
+    PUSHBUTTON      "Button1",IDC_BUTTON4,165,7,14,12,BS_BITMAP
+    PUSHBUTTON      "Button1",IDC_BUTTON1,117,7,14,12,BS_ICON
+    PUSHBUTTON      "Button1",IDC_BUTTON2,133,7,14,12,BS_ICON
+END
+
+IDD_COLOR_ITEM DIALOG  2, 0, 298, 208
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Color Item Dialog"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "&Basic Colors:",IDC_STATIC,4,4,140,9
+    CONTROL         "",COLOR_BOX1,"Static",SS_SIMPLE | WS_GROUP | WS_TABSTOP,
+                    4,14,140,86
+    LTEXT           "&Custom Colors:",IDC_STATIC,4,106,140,9
+    CONTROL         "",COLOR_CUSTOM1,"Static",SS_SIMPLE | WS_GROUP | 
+                    WS_TABSTOP,4,116,140,28
+    PUSHBUTTON      "&Define Custom Colors...",COLOR_MIX,4,150,140,14,
+                    WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,152,188,44,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,201,188,44,14,WS_GROUP
+    PUSHBUTTON      "&Help",1038,250,188,44,14,WS_GROUP
+    CONTROL         "",COLOR_RAINBOW,"Static",SS_BLACKFRAME,152,4,118,116
+    CONTROL         "",COLOR_LUMSCROLL,"Static",SS_SIMPLE,280,4,8,116
+    CONTROL         "",COLOR_CURRENT,"Static",SS_BLACKFRAME,152,124,40,26
+    PUSHBUTTON      "&o",COLOR_SOLID,300,200,4,14,WS_GROUP
+    RTEXT           "Color|",IDC_STATIC,152,151,20,9
+    LTEXT           "S&olid",IDC_STATIC,172,151,20,9
+    RTEXT           "&Hue:",COLOR_HUEACCEL,194,126,20,9
+    EDITTEXT        COLOR_HUE,216,124,18,12,WS_GROUP
+    RTEXT           "&Sat:",COLOR_SATACCEL,194,140,20,9
+    EDITTEXT        COLOR_SAT,216,138,18,12,WS_GROUP
+    RTEXT           "&Lum:",COLOR_LUMACCEL,194,154,20,9
+    EDITTEXT        COLOR_LUM,216,152,18,12,WS_GROUP
+    RTEXT           "&Red:",COLOR_REDACCEL,243,126,24,9
+    EDITTEXT        COLOR_RED,269,124,18,12,WS_GROUP
+    RTEXT           "&Green:",COLOR_GREENACCEL,243,140,24,9
+    EDITTEXT        COLOR_GREEN,269,138,18,12,WS_GROUP
+    RTEXT           "Bl&ue:",COLOR_BLUEACCEL,243,154,24,9
+    EDITTEXT        COLOR_BLUE,269,152,18,12,WS_GROUP
+    PUSHBUTTON      "&Add to Custom Colors",COLOR_ADD,152,168,142,14,
+                    WS_GROUP
+    EDITTEXT        IDC_EDIT1,104,168,39,14,ES_AUTOHSCROLL
+    RTEXT           "Please assign a new value: ",IDC_STATIC,5,168,96,14,
+                    SS_CENTERIMAGE | SS_SUNKEN
+END
+
+IDD_NEW_DOCUMENT DIALOG  0, 0, 291, 146
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Data Initialization"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,58,125,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,183,125,50,14
+    RTEXT           "Depth to top grid ",IDC_STATIC,7,21,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT1,108,21,160,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON1,270,21,14,12
+    RTEXT           "Geological database ",IDC_STATIC,7,7,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT2,108,7,160,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON2,270,7,14,12
+    RTEXT           "Thickness of one layer , m ",IDC_STATIC,7,35,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT3,108,35,160,12,ES_AUTOHSCROLL
+    RTEXT           "Archive with initial property ",IDC_STATIC,7,64,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT4,108,64,160,12,ES_AUTOHSCROLL
+    RTEXT           "Number of layers in a model ",IDC_STATIC,7,49,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT5,108,49,160,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_BUTTON3,270,64,14,12
+    RTEXT           "Minimal valid value ",IDC_STATIC,7,78,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT10,108,78,160,12,ES_AUTOHSCROLL
+    RTEXT           "Maximal valid value ",IDC_STATIC,7,92,98,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT11,108,92,160,12,ES_AUTOHSCROLL
+    CONTROL         "Arithmetic",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,109,108,49,11
+    CONTROL         "Logarithmic",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,165,
+                    108,53,11
+    RTEXT           "Data Mapping ",IDC_STATIC,7,107,98,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+END
+
+IDD_PROBE_GRID DIALOG  0, 0, 282, 262
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Probe"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Done",IDOK,225,241,50,14
+    CONTROL         "Custom1",IDC_CUSTOM1,"GXWND",WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,7,7,268,229
+END
+
+IDD_SATURATION DIALOGEX 0, 0, 194, 173
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Cumulative Saturation -- Field"
+MENU IDR_FIELD_EXPR
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Done",IDCANCEL,137,152,50,14
+    EDITTEXT        IDC_EDIT1,125,7,38,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPIN1,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,166,7,11,
+                    13
+    EDITTEXT        IDC_EDIT2,125,23,38,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_BUTTON1,"Button",BS_OWNERDRAW | WS_TABSTOP,164,23,
+                    23,14
+    EDITTEXT        IDC_EDIT7,125,40,38,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_BUTTON3,"Button",BS_OWNERDRAW | WS_TABSTOP,164,40,
+                    23,14
+END
+
+IDD_RESERVES DIALOG  0, 0, 264, 193
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Reserves -- Field"
+MENU IDR_CROSS_SECTION
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Done",IDCANCEL,207,172,50,14
+    LTEXT           "dinsity for oil phase",IDC_STATIC,168,19,89,9
+    EDITTEXT        IDC_EDIT1,168,29,89,11,ES_AUTOHSCROLL
+    LTEXT           "shrinkage factor",IDC_STATIC,168,48,89,9
+    EDITTEXT        IDC_EDIT3,168,58,89,11,ES_AUTOHSCROLL
+    LTEXT           "thermal factor",IDC_STATIC,168,91,89,9
+    EDITTEXT        IDC_EDIT4,168,101,89,11,ES_AUTOHSCROLL
+    LTEXT           "baric coefficient",IDC_STATIC,168,120,89,9
+    EDITTEXT        IDC_EDIT5,168,130,89,11,ES_AUTOHSCROLL
+    CONTROL         "Custom1",IDC_CUSTOM1,"GXWND",WS_BORDER | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP,7,7,157,179
+    PUSHBUTTON      "Edit",ID_EDIT,207,155,50,14
+END
+
+IDD_RESCONSTR DIALOG  0, 0, 240, 183
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,162,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,61,162,50,14
+    LISTBOX         IDC_LIST1,7,7,117,151,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Constraint name",IDC_STATIC,129,7,104,9
+    EDITTEXT        IDC_EDIT1,129,18,104,12,ES_AUTOHSCROLL
+    LTEXT           "Top surface",IDC_STATIC,129,64,104,9
+    EDITTEXT        IDC_EDIT2,128,75,105,11,ES_AUTOHSCROLL
+    LTEXT           "Base surface",IDC_STATIC,129,97,104,9
+    EDITTEXT        IDC_EDIT6,128,108,105,11,ES_AUTOHSCROLL
+    PUSHBUTTON      "Remove",ID_REMOVE,183,162,50,14
+    PUSHBUTTON      "Update",ID_UPDATE,183,145,50,14
+END
+
+IDD_FIELD_EXPR DIALOG  0, 0, 306, 241
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Integral properties"
+MENU IDR_FIELD_EXPR
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Compute",ID_UPDATE,7,219,50,14
+    LTEXT           "Labeling and units",IDC_STATIC,137,20,75,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT1,214,20,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,214,34,79,12,ES_AUTOHSCROLL
+    LTEXT           "Element of integration",IDC_STATIC,137,34,75,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    EDITTEXT        IDC_EDIT3,213,47,79,12,ES_AUTOHSCROLL
+    LTEXT           "Description",IDC_STATIC,137,47,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    EDITTEXT        IDC_EDIT5,213,103,79,12,ES_AUTOHSCROLL
+    LTEXT           "Lower surface",IDC_STATIC,137,116,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    EDITTEXT        IDC_EDIT6,213,116,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,213,162,79,12,ES_AUTOHSCROLL
+    LTEXT           "Constraint",IDC_STATIC,137,162,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    DEFPUSHBUTTON   "&Remove",ID_REMOVE,77,219,50,14
+    LTEXT           "Available properties",IDC_STATIC,7,7,120,12,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | 
+                    LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,7,20,120,194
+    LTEXT           "Notation",IDC_STATIC,137,89,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    EDITTEXT        IDC_EDIT4,213,89,79,12,ES_AUTOHSCROLL
+    GROUPBOX        "Integral dataset",IDC_STATIC,131,7,168,62
+    GROUPBOX        "Geological formation",IDC_STATIC,131,77,168,61
+    LTEXT           "Upper surface",IDC_STATIC,137,103,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    GROUPBOX        "Areal constraint",IDC_STATIC,131,148,168,66
+    EDITTEXT        IDC_EDIT8,213,175,79,12,ES_AUTOHSCROLL
+    LTEXT           "Contouring",IDC_STATIC,137,175,75,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CONTROL         "Digitize",ID_DIGITIZE,"Button",BS_AUTOCHECKBOX | 
+                    BS_PUSHLIKE | WS_TABSTOP,242,193,50,14
+END
+
+IDD_DIGITIZE DIALOG  0, 0, 186, 162
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Contour Digitizer"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,69,141,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,141,50,14
+END
+
+IDD_FINDWELL DIALOG  0, 0, 170, 214
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Find Well"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT1,7,30,156,13,ES_AUTOHSCROLL
+    LISTBOX         IDC_LIST1,7,48,156,159,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "номер скважины",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,7,7,156,10
+    CONTROL         "идентификатор ствола",IDC_RADIO2,"Button",
+                    BS_AUTORADIOBUTTON,7,17,156,10
+END
+
+IDD_LOGTRACK DIALOGEX 0, 0, 216, 270
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "ГИС -- Field"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,40,249,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,249,50,14
+    LISTBOX         IDC_LIST1,7,7,200,235,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_INCLINOMETRY DIALOGEX 0, 0, 246, 199
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Edit"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Update",IDOK,189,153,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,189,171,50,14
+    EDITTEXT        IDC_EDIT1,78,156,90,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,78,171,90,13,ES_AUTOHSCROLL
+    LTEXT           "Well bore number",IDC_STATIC,14,159,63,8
+    LTEXT           "Parent well bore",IDC_STATIC,14,175,63,8
+    GROUPBOX        "Unique Well Identifier",IDC_STATIC,7,146,168,45
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | 
+                    LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,7,55,231,87
+    EDITTEXT        IDC_EDIT2,7,41,56,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,67,41,56,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,125,41,56,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,183,41,56,13,ES_AUTOHSCROLL
+    CTEXT           "dx",IDC_STATIC,7,25,56,13,SS_CENTERIMAGE | SS_SUNKEN
+    CTEXT           "dy",IDC_STATIC,67,25,56,13,SS_CENTERIMAGE | SS_SUNKEN
+    CTEXT           "dz",IDC_STATIC,125,25,56,13,SS_CENTERIMAGE | SS_SUNKEN
+    CTEXT           "md",IDC_STATIC,183,25,56,13,SS_CENTERIMAGE | SS_SUNKEN
+    PUSHBUTTON      "Insert",IDC_BUTTON4,126,9,55,13
+    PUSHBUTTON      "Remove",IDC_BUTTON5,183,9,55,13
+    CTEXT           "Inclinometry",IDC_STATIC,7,9,115,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "Field MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "Field"
+            VALUE "LegalCopyright", "Copyright (C) 2002"
+            VALUE "OriginalFilename", "Field.EXE"
+            VALUE "ProductName", "Field Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_FIELD_GRID, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_FIELD_DATA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_FIELD_FORM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 710
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 94
+    END
+
+    IDD_CROSS_SECTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 274
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 254
+    END
+
+    IDD_PLOT_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 301
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 187
+    END
+
+    IDD_COLOR_LIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 304
+    END
+
+    IDD_NEW_DOCUMENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 284
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 139
+    END
+
+    IDD_PROBE_GRID, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 275
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 255
+    END
+
+    IDD_SATURATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 166
+    END
+
+    IDD_RESERVES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 257
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 186
+    END
+
+    IDD_RESCONSTR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 233
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_FIELD_EXPR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 299
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 233
+    END
+
+    IDD_DIGITIZE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 155
+    END
+
+    IDD_FINDWELL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 207
+    END
+
+    IDD_LOGTRACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 209
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 263
+    END
+
+    IDD_INCLINOMETRY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 192
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_PLOT_PROPERTIES DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 3, 0
+0x3441, "\000" 
+    IDC_COMBO1, 0x403, 3, 0
+0x3341, "\000" 
+    IDC_COMBO1, 0x403, 3, 0
+0x3041, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "Field\n\nField\n\n\nField.Document\nField Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Field"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FIELD_VIEW_PROP      "Popups a field view properties dialog"
+    ID_FIELD_SCALE          "Toggle a scale bar widget"
+    ID_FIELD_COLORING       "Turn on/off data to color mapping"
+    ID_VIEW_CROSS_SECTION   "&Toggle cross-section dialog box"
+    ID_PLOT_PROPERTIES      "Plot properties"
+    ID_PROBE_GRID           "Display a cell probe window"
+    ID_SATURATION           "Toggle a cumulative saturation mode"
+    ID_RESDIALOG            "Toggle resource dialog mode"
+    ID_FIELD_EXPR           "View integral properties dialog"
+    ID_FINDWELL             "Toggle Find Well tool"
+    ID_FIELD_QUERYWELLBORE  "GIS Interpretation"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FIELD_START3DVIEWER  "Start visualization"
+END
+
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Field.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

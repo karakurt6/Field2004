@@ -1,0 +1,4 @@
+base referer
+rect $union_node.html 79,200 167,328
+rect $struct_field.html 121,24 187,120
+rect $struct_number.html 211,24 286,120

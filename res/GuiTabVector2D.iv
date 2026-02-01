@@ -1,0 +1,56 @@
+#Inventor V1.0 ascii
+
+#########################  VECTOR TAB ################
+      RowDialog {
+        label "Vector"
+        height 150
+        fixedHeight TRUE
+        auditorID "VectorTab"
+
+        ###################  Vector field #############
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          rowSpacing 5
+
+          DialogLabel {
+            label "Vector field"
+          }
+          DialogCheckBox {
+            label "Enable"
+            auditorID "VectorFieldEnable"
+          }
+          DialogRealSlider {
+            label "Vec length"
+            min 0
+            max 5
+            value 1
+            auditorID "VectorFieldLength"
+          }
+          DialogComboBox {
+            label "End arrow type"
+            maxWidth 200
+            items  ["no shape","chevron","triangle"]
+            auditorID "VectorFieldEndArrowType"
+          }
+          DialogComboBox {
+            label "End arrow height"
+            maxWidth 200
+            items  ["constant","relative"]
+            auditorID "VectorFieldEndArrowHeight"
+          }
+          DialogRealSlider {
+            label "End arrow ht"
+            min 0.05
+            max 0.3
+            auditorID "VectorFieldEndArrowHt"
+          }
+          DialogRealSlider {
+            label "End arrow rd"
+            min 0.1
+            max 1
+            auditorID "VectorFieldEndArrowRd"
+          }
+        }
+      }
+
+    

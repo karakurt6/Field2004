@@ -1,0 +1,25 @@
+//
+// FIELD.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+#ifndef _DEBUG
+/* #include "Grid\gxres.rc" */
+#endif
+
+GuiMenuBar IV res\GuiMenuBar.iv
+GuiTabProbe IV res\GuiTabProbe.iv
+GuiTabScalar2D IV res\GuiTabScalar2D.iv
+GuiTabScalar3D IV res\GuiTabScalar3D.iv
+GuiTabStream IV res\GuiTabStream.iv
+GuiTabVector2D IV res\GuiTabVector2D.iv
+GuiTabVector3D IV res\GuiTabVector3D.iv
+
+/////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,39 @@
+#Inventor V1.0 ascii
+
+#########################  PROBE TAB ################
+      RowDialog {
+        label "Probe"
+        rowSpacing 10
+        height 150
+        fixedHeight TRUE
+        auditorID "ProbeTab"
+
+        ###################  Cell #############
+        RowDialog {
+          edgeStyle  SHADOW_IN
+
+          DialogLabel {
+            label "View cell containing the dragger position"
+          }
+          DialogCheckBox {
+            label "Cell facets"
+            auditorID "CellFacets"
+          }
+          DialogCheckBox {
+            label "Cell edges"
+            auditorID "CellEdge"
+          }
+          DialogCheckBox {
+            label "Cell indices"
+            auditorID "CellIndices"
+          }
+          DialogRealSlider {
+            label "Offset of cell indices"
+            min 0
+            max 5
+            value 1
+            auditorID "CellIndicesOffset"
+          }
+        }
+      }
+

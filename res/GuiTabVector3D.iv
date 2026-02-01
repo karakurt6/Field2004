@@ -1,0 +1,45 @@
+#Inventor V1.0 ascii
+
+#########################  VECTOR TAB ################
+      RowDialog {
+        label "Vector"
+        rowSpacing 10
+        height 150
+        fixedHeight TRUE
+        auditorID "VectorTab"
+
+        ###################  Vector field #############
+        RowDialog {
+          edgeStyle  SHADOW_IN
+          DialogLabel {
+            label "Vector field"
+          }
+          DialogCheckBox {
+            label "Enable"
+            auditorID "VectorEnable"
+          }
+          DialogRealSlider {
+            label "Grid spacing"
+            min 0
+            max 0.1
+            value 0.05
+            auditorID "VectorGridSpacing"
+          }
+          DialogRealSlider {
+            label "Vector' length"
+            min 0.001
+            max 0.014
+            value 0.007
+            format "%.10f"
+            auditorID "VectorLength"
+          }
+          DialogComboBox {
+            label "Projection"
+            maxWidth 200
+            items  ["no projection","projection on plane","projection on normal"]
+            auditorID "VectorProjection"
+          }
+        }
+      }
+
+    

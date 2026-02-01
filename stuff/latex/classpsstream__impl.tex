@@ -1,0 +1,182 @@
+\section{psstream\_\-impl Class Reference}
+\label{classpsstream__impl}\index{psstream_impl@{psstream\_\-impl}}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf psstream\_\-impl} (const char $\ast$file)\label{classpsstream__impl_a0}
+
+\item 
+{\bf $\sim$psstream\_\-impl} ()\label{classpsstream__impl_a1}
+
+\item 
+bool {\bf setfont} (const char $\ast$name, double size)\label{classpsstream__impl_a2}
+
+\item 
+void {\bf textbox} (const char $\ast$text, double $\ast${\bf bbox})\label{classpsstream__impl_a3}
+
+\item 
+void {\bf newpage} ()\label{classpsstream__impl_a4}
+
+\item 
+void {\bf moveto} (double x, double y)\label{classpsstream__impl_a5}
+
+\item 
+void {\bf lineto} (double x, double y)\label{classpsstream__impl_a6}
+
+\item 
+void {\bf curveto} (double x1, double y1, double x2, double y2, double x3, double y3)\label{classpsstream__impl_a7}
+
+\item 
+void {\bf rlineto} (double x, double y)\label{classpsstream__impl_a8}
+
+\item 
+void {\bf show} (const char $\ast$text)\label{classpsstream__impl_a9}
+
+\item 
+void {\bf outlineshow} (const char $\ast$text)\label{classpsstream__impl_a10}
+
+\item 
+void {\bf label\_\-textproc} (double x, double y, double r, double d, const char $\ast$s, bool f)\label{classpsstream__impl_a11}
+
+\item 
+void {\bf annot\_\-textproc} (double x, double y, double a, const char $\ast$s, bool f)\label{classpsstream__impl_a12}
+
+\item 
+void {\bf ltext\_\-textproc} (double x, double y, double r, double a, const char $\ast$s, bool f)\label{classpsstream__impl_a13}
+
+\item 
+void {\bf rtext\_\-textproc} (double x, double y, double r, double a, const char $\ast$s, bool f)\label{classpsstream__impl_a14}
+
+\item 
+void {\bf s\_\-tolerance} (double s)\label{classpsstream__impl_a15}
+
+\item 
+void {\bf min\_\-collector} (double p, double r, double g, double b)\label{classpsstream__impl_a16}
+
+\item 
+void {\bf max\_\-collector} (double p, double r, double g, double b)\label{classpsstream__impl_a17}
+
+\item 
+void {\bf beginproc} (const char $\ast$name)\label{classpsstream__impl_a18}
+
+\item 
+void {\bf invokeproc} (const char $\ast$name)\label{classpsstream__impl_a19}
+
+\item 
+void {\bf endproc} ()\label{classpsstream__impl_a20}
+
+\item 
+void {\bf tricolor} (int n, const {\bf color\_\-type} $\ast$s)\label{classpsstream__impl_a21}
+
+\item 
+void {\bf trifill} (double x1, double y1, double g1, double o1, double w1, double x2, double y2, double g2, double o2, double w2, double x3, double y3, double g3, double o3, double w3)\label{classpsstream__impl_a22}
+
+\item 
+void {\bf quadfill} (double x1, double y1, double g1, double o1, double w1, double x2, double y2, double g2, double o2, double w2, double x3, double y3, double g3, double o3, double w3, double x4, double y4, double g4, double o4, double w4)\label{classpsstream__impl_a23}
+
+\item 
+void {\bf pixelplot} (int cx, int cy, const float $\ast$xx, const float $\ast$yy, const float $\ast$gg, const float $\ast$oo, const float $\ast$ww)\label{classpsstream__impl_a24}
+
+\item 
+void {\bf setdash} (int n, int $\ast$pp, int o)\label{classpsstream__impl_a25}
+
+\item 
+void {\bf setgray} (double g)\label{classpsstream__impl_a26}
+
+\item 
+void {\bf setrgbcolor} (double r, double g, double b)\label{classpsstream__impl_a27}
+
+\item 
+void {\bf setcmykcolor} (double c, double m, double y, double k)\label{classpsstream__impl_a28}
+
+\item 
+void {\bf setcolorspace} (double line\_\-width, double scale\_\-factor)\label{classpsstream__impl_a29}
+
+\item 
+void {\bf setcolor} (double r, double g, double b, {\bf psstream::Pattern} h)\label{classpsstream__impl_a30}
+
+\item 
+void {\bf translate} (double x, double y)\label{classpsstream__impl_a31}
+
+\item 
+void {\bf rotate} (double a)\label{classpsstream__impl_a32}
+
+\item 
+void {\bf command} (const char $\ast$cmd)\label{classpsstream__impl_a33}
+
+\item 
+void {\bf arc} (double x, double y, double r, double a1, double a2)\label{classpsstream__impl_a34}
+
+\item 
+void {\bf arcn} (double x, double y, double r, double a1, double a2)\label{classpsstream__impl_a35}
+
+\item 
+void {\bf setlinewidth} (double w)\label{classpsstream__impl_a36}
+
+\item 
+void {\bf updatebb} (double x1, double x2, double y1, double y2)\label{classpsstream__impl_a37}
+
+\item 
+void {\bf updatecp} (double x, double y)\label{classpsstream__impl_a38}
+
+\item 
+void {\bf selectmedia} ({\bf psstream::Format} f, {\bf psstream::Orientation} o)\label{classpsstream__impl_a39}
+
+\item 
+double {\bf pagewidth} () const \label{classpsstream__impl_a40}
+
+\item 
+double {\bf pageheight} () const \label{classpsstream__impl_a41}
+
+\item 
+void {\bf rectstroke} (double x, double y, double w, double h)\label{classpsstream__impl_a42}
+
+\item 
+void {\bf rectfill} (double x, double y, double w, double h)\label{classpsstream__impl_a43}
+
+\item 
+void {\bf colorimage} (double x0, double y0, double sx, double sy,$\backslash$int num\_\-levels, const float $\ast$level, const {\bf color\_\-type} $\ast$color,$\backslash$int cx, int cy, const float $\ast$func)\label{classpsstream__impl_a44}
+
+\item 
+void {\bf grayscaleimage} (double x0, double y0, double sx, double sy,$\backslash$int num\_\-levels, const float $\ast$level, const double $\ast$color,$\backslash$int cx, int cy, const float $\ast$func)\label{classpsstream__impl_a45}
+
+\item 
+void {\bf bilevelimage} (double x0, double y0, double sx, double sy,$\backslash$int cx, int cy, const vertex\_\-type \&ver, const edge\_\-type \&pgn)\label{classpsstream__impl_a46}
+
+\item 
+void {\bf grayscaleimage} (double x0, double y0, double sx, double sy,$\backslash$int cx, int cy, const vertex\_\-type \&ver, const edge\_\-type \&pgn)\label{classpsstream__impl_a47}
+
+\item 
+bool {\bf getbbox} (double $\ast$bb)\label{classpsstream__impl_a48}
+
+\item 
+void {\bf setbbox} (bool f, double $\ast$bb)\label{classpsstream__impl_a49}
+
+\item 
+void {\bf horizontal\_\-scale} (int start, int step, int final, double orig, double range, double dx, double x0, double y0, double sx)\label{classpsstream__impl_a50}
+
+\item 
+void {\bf vertical\_\-scale} (int start, int step, int final, double orig, double range, double dy, double x0, double y0, double sx)\label{classpsstream__impl_a51}
+
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf page\_\-type}
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+
+
+Definition at line 5 of file ps\_\-priv.h.
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+ps\_\-priv.h\item 
+ps\_\-image.cpp\item 
+ps\_\-proc.0.cpp\item 
+ps\_\-proc.cpp\item 
+ps\_\-stream.cpp\end{CompactItemize}
